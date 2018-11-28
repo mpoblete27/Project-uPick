@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>uPick</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+    <button id="start-game">Start Game</button>
+    <div class="container">
+        <div class="row">
+            <div class="cuisine-display" class="button">
+            </div>
+        </div>
+    </div>
+    <br>
+    <p class="correct-answer">The pick:
+            <div class="correct-answer" id="correct-answer-id"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+<script>
+
+// list of top trending cuisines
+var cuisines = ['Korean', 'Japanese', 'Filipino', 'Chinese', 'Mexican', 'Burmese', 'Thai', 'American', 'Indian', 'Italian'];
+var cuisineButton;
+var finalButton;
+
+// click handler to start game and generate cuisine buttons
+$('#start-game').on('click', function () {
+    // console.log("button clicked!");
+    createButtons(cuisines)
+});
+//when user decides to eliminate one of the cusines
+$(document).on('click', '.cuisine-button', function () {
+    var elimCu = $(this).attr("data-name");
+    // debugger
+    for(var i = 0; i< cuisines.length; i++){
+    if(elimCu === cuisines[i]){
+        cuisines.splice(i, 1);
+        createButtons(cuisines)
+    }
+
+}
+});
+
+//functionality to delete cuisine-selections 
+function createButtons(cuisines){
+    // however game ends when all but 1 selections are eliminated
+    if(cuisines.length === 1) {
+        finalButton = $('p').text(cuisines);
+        $('p').append(finalButton);   
+        alert(`The picked cuisine is: ${cuisines}`);
+    }
+    
+    
+    //to delete cuisine-selection
+    $('.cuisine-display').empty();
+    for (var i = 0; i < cuisines.length; i++) {
+        cuisineButton = $('<button>');
+        cuisineButton.addClass('cuisine-button');
+        cuisineButton.attr('data-name', cuisines[i]);
+        cuisineButton.text(cuisines[i]);
+        $('.cuisine-display').append(cuisineButton);
+    } 
+};
+
+
+</script>
+</body>
+</html>
