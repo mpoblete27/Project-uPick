@@ -19,6 +19,16 @@
     <br>
     <p class="correct-answer">The pick:
             <div class="correct-answer" id="correct-answer-id"></div>
+            <br>
+            
+            <hr>
+            <div>
+            <h3 class="">Trending:
+              <strong>
+                <span id="connected-viewers"></span>
+              </strong> currently on uPick.</h3>
+            </div>
+       
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
@@ -38,17 +48,52 @@
       // Create a variable to reference the database
 
        var database = firebase.database();    
+
+       // -----------------------------
+
+// connectionsRef references a specific location in our database.
+// All of our connections will be stored in this directory.
+var connectionsRef = database.ref("/connections");
+
+// '.info/connected' is a special location provided by Firebase that is updated
+// every time the client's connection state changes.
+// '.info/connected' is a boolean value, true if the client is connected and false if they are not.
+var connectedRef = database.ref(".info/connected");
+
+// When the client's connection state changes...
+connectedRef.on("value", function(snap) {
+
+  // If they are connected..
+  if (snap.val()) {
+
+    // Add user to the connections list.
+    var con = connectionsRef.push(true);
+    // Remove user from the connection list when they disconnect.
+    con.onDisconnect().remove();
+  }
+});
+
+// When first loaded or when the connections list changes...
+connectionsRef.on("value", function(snap) {
+
+  // Display the viewer count in the html.
+  // The number of online users is the number of children in the connections list.
+  $("#connected-viewers").text(snap.numChildren());
+});
     
 
 
     // Initital values: list of top trending cuisines
-     var cuisines = ['Korean', 'Japanese', 'Filipino', 'Chinese', 'Mexican', 'Burmese', 'Thai', 'American', 'Indian', 'Italian'];
+     var cuisines = ['American', 'Chinese', 'Filipino','Indian', 'Italian', 'Japanese', 'Korean', 'Thai', 'Mexican', 'Vitnamese'];
      var cuisineButton;
      var finalButton;
+     database.ref("/cuisines").set({
+         cuisines: cuisines
+     })
 
      // At the initial load and subsequent value changes, get a snapshot of the stored data.
-     // This function allows you to update your page in real-time when the firebase database changes.
-     database.ref().on("value", function(snapshot) {
+     // Th
+     database.ref("/cuisines").on("value", function(snapshot) {
          if(cuisines.length === 10){
              return;
          }
@@ -75,7 +120,10 @@
 // click handler to start game and generate cuisine buttons
 $('#start-game').on('click', function () {
     // event.preventDefault();
-    
+    cuisines = ['Korean', 'Japanese', 'Filipino', 'Chinese', 'Mexican', 'Burmese', 'Thai', 'American', 'Indian', 'Italian'];
+    database.ref('/cuisines').set({
+        cuisines: cuisines
+    })
     // console.log("button clicked!");
     createButtons(cuisines)
 
@@ -83,6 +131,7 @@ $('#start-game').on('click', function () {
 
 //when user decides to eliminate one of the cusines
 $(document).on('click', '.cuisine-button', function () {
+
     
     var elimCu = $(this).attr("data-name");
     // debugger
@@ -90,7 +139,7 @@ $(document).on('click', '.cuisine-button', function () {
     if(elimCu === cuisines[i]){
         cuisines.splice(i, 1);
         // createButtons(cuisines);
-        database.ref().set({
+        database.ref("/cuisines").set({
             cuisines: cuisines
         })
 
