@@ -84,21 +84,24 @@ function initMap(newLat, newLong) {
 
 //ensure PlacesService worked
 function callback(results, status) {
-  if(status === google.maps.places.PlacesService.OK){
+  if(status == google.maps.places.PlacesService.OK){
     for (var i = 0; i < results.length; i++){
-      createMarker(results[i]);
+      var place = results[i];
+      //optional to place markers
+      // createMarker(results[i]);
     }
   }
 }
 
 //put a map marker down on each restaurant in that area
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var maker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-}
+//this part is optional
+// function createMarker(place) {
+//   var placeLoc = place.geometry.location;
+//   var marker = new google.maps.Marker({
+//     map: map,
+//     position: place.geometry.location
+//   });
+// }
 
 //lat and long are parameters taken from showPosition function when it was fed/sent.
 //this function won't be used until the coordinates have been defined in showPosition and sent to this function

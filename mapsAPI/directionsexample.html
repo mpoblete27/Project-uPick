@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+                /* Always set the map height explicitly to define the size of the div
+                 * element that contains the map. */
+                #map-canvas {
+                  height: 100%;
+                }
+                /* Optional: Makes the sample page fill the window. */
+                html, body {
+                  height: 100%;
+                  margin: 0;
+                  padding: 0;
+                }
+              </style>
+        <link rel="stylesheet" href="">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW2P5znpC7asNyzcITnoDRVOutOYjmPzU&libraries=places"
+        type="text/javascript"></script>
+</head>
+    <body>
+    <!-- Here's our map where the area gets shown -->
+            <div id="map-canvas"></div>
+
+            <button id="get">Get Directions</button>
+        
+        <script>
+            
+            var directionsDisplay = new google.maps.DirectionsRender();
+
+            var directionsService = new google.maps.DirectionsService();
+            
+            var map;
+
+            var startPoint = new google.maps.Latlng(33.8121, -117.9190);
+            var endPoint = new google.maps.Latlng(21.1381, -118.3534);
+            
+        function getMap(){
+            var mapOptions = {
+                zoom: 10,
+                center: startPoint,
+            }
+        };
+            
+            map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            
+            directionsDisplay.setMap(map);
+            
+            function calculateRoute(){
+                var request = {
+                    origin: startPoint,
+                    destination: endPoint,
+                    travelMode: "DRIVING"
+                };
+
+                directionsService.route(request, function(result, status){
+                    if(status == "OK"){
+                        //shows the directions
+                        directionsDisplay.setDirections(result);
+                    }
+                });
+            }
+
+            document.getElementById("get").onclick= function(){
+                calculateRoute();
+            }
+        </script>
+    </body>
+</html>
