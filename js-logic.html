@@ -32,12 +32,14 @@
         <div id="correct-answer-id"></div>
         <br>
 
+        <!-- Random pick button-->
+        <div class="pick-random button"></div>
+        <br>
 
         <!-- FINAL FINAL result -->
-
-        <p class="final-final">Looks like you're eating at:
+        <p class="final-final">
             <div id="final-final-id"></div>
-
+            <br>
             <hr>
             <div>
                 <h3 class="">Trending:
@@ -196,7 +198,6 @@
 
 
 
-
                 // End game function
                 function gameOver() {
                     resetGameForAll();
@@ -207,21 +208,37 @@
                 var finalPicks = ['in and out', 'mcdonalds', 'super duper', 'burger king', 'smash burger'];
                 var finalFinalPick;
 
-                // Random pick function
+                // <div class="pick-random"></div>
+
+                // Create Randomly Select button
+                var randomButton = $('<button>');
+                randomButton.addClass('pick-random');
+                randomButton.append('Randomly Select');
+                $('.pick-random').append(randomButton);
+
+
+
+                // Random pick function button
+                $('.pick-random').on('click', function () {
+                    pickRandom(finalPicks);
+                });
+
+
+                // Function to randomly select from google selection
                 function pickRandom(finalPicks) {
 
                     finalFinalPick = finalPicks[Math.floor(Math.random() * finalPicks.length)];
+
+                    // New div to display random pick display
+                    $('#final-final-id').text("Looks like you're eating: " + finalFinalPick);
+
                     return finalFinalPick;
-
-
-
-
-
                 }
+
                 console.log(pickRandom(finalPicks));
 
-                // New div to display random pick display
-                $('#final-final-id').text(finalFinalPick);
+
+
 
 
 
