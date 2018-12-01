@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>uPick</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <style>
+        .strike {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" id="start-game" class="btn">Start Game</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script>
+
+        var config = {
+    apiKey: "AIzaSyAV-grm0Ao9DBqUZT6mCgIxD4nA1oM0NCE",
+    authDomain: "testproject-ecfdb.firebaseapp.com",
+    databaseURL: "https://testproject-ecfdb.firebaseio.com",
+    projectId: "testproject-ecfdb",
+    storageBucket: "testproject-ecfdb.appspot.com",
+    messagingSenderId: "1009715215096"
+  };
+  firebase.initializeApp(config);
+
+      // Create a variable to reference the database
+
+       var database = firebase.database();    
+
+
+        $('#start-game').on('click', function () {
+            resetGameForAll();
+        });
+
+        function resetGameForAll(){
+            var cuisines = [{food: 'American', eliminated: false },
+                    {food: 'Chinese', eliminated: false },
+                    {food: 'Greek', eliminated: false },
+                    {food: 'Indian', eliminated: false },
+                    {food: 'Italian', eliminated: false },
+                    {food: 'Japanese', eliminated: false },
+                    {food: 'Korean', eliminated: false },
+                    {food: 'Mexican', eliminated: false },
+                    {food: 'Vietnamese', eliminated: false },
+                
+                    ];
+            var players = [{player: 'playerOne', playerOneExists: false, turns: 2},
+                    {player: 'playerTwo', playerTwoExists: false, turns: 2} ,
+                    {player: 'playerThree', playerThreeExists: false, turns: 2},
+                    {player: 'playerFour', playerFourExists: false, turns: 2}
+                    ];
+
+
+            database.ref('/cuisines').set({
+                cuisines: cuisines
+            });
+            createButtons(cuisines)
+        }
+
+    </script>
+</body>
+</html>
