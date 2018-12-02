@@ -25,44 +25,22 @@
         margin: 5px 0 0 0;
       }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*  */
-
-
-
 body {
     font-family: europa, sans-serif;
-
-
 }
 
-#start-game {
-    background-color: white;
-    border: 2px solid black;
-    margin: 10px;
-    border-radius: 25px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding-left: 20px;
-    padding-right: 20px;
+.startlogo {
+  text-align: center;
+  position: relative;
+  margin-top: 50%;
+}
 
+
+.clicktoenter {
+    margin-top: 25px;
+    letter-spacing: 4px;
+
+    font-size: 12px;
 }
 
 .cuisine-button {

@@ -7,15 +7,17 @@
     <title>uPick</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <style>
-        .strike {
-            color: red;
-        }
-    </style>
+    
+        <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="index.html" id="start-game"><img src="assets/upick-glow-logo.gif"></a>
-  
+    <div class="startlogo" height="100%">
+    <a href="index.html" id="start-game">
+        <img id="start" width="225"  src="assets/upicklogo3d.png">
+    </a>
+    <br>
+    <p class="clicktoenter">PRESS TO ENTER</p>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
@@ -36,8 +38,13 @@
        var database = firebase.database();    
 
 
-        $('#start-game').on('click', function () {
+// $("#on").hide();
 
+//         $('#start-game').mousedown(function () {  
+//             $("#off").hide();
+//             $("#on").show();
+       
+        $('#start-game').on('click', function () {
             resetGameForAll();
         });
 
