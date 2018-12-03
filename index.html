@@ -73,35 +73,36 @@
 
  
 $(document).ready( function(){
-  $(".gameHead").hide();
+  $("#eliminate").hide();
   $(".cuisine-display").hide();
   $("#map").hide();
   $(".result-div").hide();
-      $("#end-page").hide();
+  $("#end-page").hide();
+      resetGameForAll();
 })
     // Click join button event for dynamically added <button> elements
     $(document).on("click", "#playerOne", function () {
     
-      $(".playersContainer").css("background-color", "#DDC7A1");
-      $(".player-one-modal").modal("show");
+      // $(".playersContainer").css("background-color", "#DDC7A1");
+      // $(".player-one-modal").modal("show");
       playerOneExists = true;
       getInGame();
     });
 
     $(document).on("click", "#playerTwo", function () {
-      $(".playersContainer").css("background-color", "#CFB17C");
-      $(".player-two-modal").modal("show");
+      // $(".playersContainer").css("background-color", "#CFB17C");
+      // $(".player-two-modal").modal("show");
       playerTwoExists = true;
       getInGame();
     });
     $(document).on("click", "#playerThree", function () {
-      $(".playersContainer").css("background-color", "#C39059");
-      $(".player-three-modal").modal("show");
+      // $(".playersContainer").css("background-color", "#C39059");
+      // $(".player-three-modal").modal("show");
       playerThreeExists = true;
       getInGame();
     });
     $(document).on("click", "#playerFour", function () {
-      $(".playersContainer").css("background-color", "#B88B38");
+      // $(".playersContainer").css("background-color", "#B88B38");
  
       playerFourExists = true;
       getInGame();
@@ -111,7 +112,7 @@ $(document).ready( function(){
       if (playerOneExists && playerTwoExists && playerThreeExists && playerFourExists) {
         gameStarted = true;
         $(".playersContainer").hide();
-        $(".gameHead").show();
+        $("#eliminate").show();
         $(".cuisine-display").show();
       }
     }
@@ -210,7 +211,7 @@ $(document).ready( function(){
         $(document).on("click", "#o", function () {
           $("#map").show();
           initMap();
-          $(".xo").hide();
+          $(".xo-display").hide();
         })
 
       }
@@ -391,16 +392,18 @@ $(document).ready( function(){
 
               $(".infoInfo").append("<p id='placeTitle'>" + place.name + "<p id='openClose'></p>" + 
                  "<p id='vicinity'>" + place.vicinity + "<p>" +  place.rating +  "<p id='priceLvl'></p>" +  "<br>" 
-                + "<button id='goHere'>GO</button>");
+                + "<button id='goHere'>GO</button>" + "<br>" + "<a href ='start.html' class='xo' id='x2' role='button'>START OVER</a>" );
 
                if (place.opening_hours.open_now == true) {
                 $("#openClose").append("OPEN");
+              
                 $(".infoInfo").css('background-color', '#B88B37');
               }
 
              if (place.opening_hours.open_now == false) {
                 $("#openClose").append("CLOSED")
                 $("#goHere").hide();
+                $("#x2").show();
                 $(".infoInfo").css('background-color', '#CD3C1D')
               }
 
@@ -421,16 +424,17 @@ $(document).ready( function(){
 
               $("#goHere").on('click', function () {
 
-                $('#confirm-modal').modal('show');
+                // $('#confirm-modal').modal('show');
                 $(".selected-restaurant-name").text(currentPlaceName);
 
-                $(".yes-btn").on("click", function () {
+                $("#goHere").on("click", function () {
                   $("#end-page").show();
-                  $('#confirm-modal').modal('hide');
+                  // $('#confirm-modal').modal('hide');
                   $("#goHere").hide();
                   console.log("egg")
                   $("#map").hide(); 
-                  $("#correct-answer-id").hide();
+                  $(".infoInfo").css('transform', 'translateY(-375px)');
+                  $(".infoInfo").css('background-color', 'rgba(184, 139, 55, 0.75)');
 
                   $(document).on("click", ".done-btn", function () {
                     resetGameForAll();
@@ -488,12 +492,20 @@ $(document).ready( function(){
 <body>
 
   <!-- 1. BUTTON GAME -->
-  <div class="container">
+  <div class="container"> 
+     <div class="gameHead">
+<img id="topLogo" src='assets/flatlogofill.png' width='100px'>
+<br>
+<br>
+<img id="eliminate" src='assets/eliminate.gif' width='100px'>
+  </div>
     <div class="playersContainer">
       <div class="current-players-div">
         <p class="">PLAYERS:
+         
           <span id="connected-viewers"></span>
-        </p>
+        </p> 
+        <br>
       </div>
 
     <div class="modal fade bd-example-modal-sm wait-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -573,18 +585,14 @@ $(document).ready( function(){
         </div>
       </div>
           <div class="waiting">
-            <img src="assets/Waiting_2.gif" width="375px">
+            <img src="assets/Waiting_2.gif" width="350px">
           </div>
       
     </div>
   </div>
   <!-- /////////////////////////////////////////////////////////////// -->
 
-  <div class="gameHead">
-<img id="topLogo" src='assets/outlinelogo.png' width='100px'>
-<br>
-<img id="eliminate" src='assets/eliminate.gif' width='100px'>
-  </div>
+
 
 
   <div class="button-game">
@@ -602,21 +610,25 @@ $(document).ready( function(){
 
   <div class="container result-div">
   <!-- <img id="upicked" class="img-fluid" src="assets/upickedthick.png">  -->
-    
+    <div class="winningCuisine" id="correct-answer-id"></div>
+
   <div class="foodImg">
     </div>
 
-    <div id="correct-answer-id"></div>
-    <br>
+    
+
+   <div class="xo-display">
     <a href ="start.html" class="xo" id="x" role="button">x</a>
 
     <!-- <button class="xo" id="x">x</button> -->
-    <button class="xo" id="o">o</button>
+    <a class="xo" id="o" role="button">o</a>
+
+    <!-- <button class="xo" id="o">o</button> -->
 
   </div>
 
 
-
+</div>
 
 
 
@@ -650,10 +662,10 @@ $(document).ready( function(){
   <!--  4. FINAL PAGE -->
 
   <div class="container lastpage" id="end-page">
-    ENJOY!
+    <!-- ENJOY!
     <br>
 
-    <a href ="start.html" class="done-btn" role="button">DONE</a>
+    <a href ="start.html" class="done-btn" role="button">DONE</a> -->
   </div>
 
 

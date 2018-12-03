@@ -1,19 +1,39 @@
- 
 
 
- .startlogo {
+
+.start-page {
+    width: 375px;
+    padding: 0;
+    margin: 0;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+#start {
+    width: 275px;
+}
+
+
+.start-page2 {
+    width: 375px;
+    padding: 0;
+    margin: 0;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-118px)
+}
+
  
- #presstoenter {
-     margin-left: 40%;
-  
- }
- 
- 
+
+#presstoenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
  
  
  
@@ -61,6 +81,7 @@
           font-family: europa, sans-serif;
           text-transform: uppercase;
           color: white;
+          font-weight: bold;
       }
 
       #vicinity {
@@ -70,17 +91,18 @@
      
 
       #goHere {
-          background-color: white;
-          color:#B88B37;
-          margin-bottom: 25px;
-          font-family: europa, sans-serif;
+
+        color: white;
+        background-color: rgba(255, 255, 255, 0);
+        border: 2px white solid;
+        font-weight: bold;
+        font-family: europa, sans-serif;
+        margin-bottom: 20px;
+        padding: 5px;
       }
 
       #goHere:hover {
-        background-color: black;
-        color: white;
-        border: 1px solid black;
-       
+        background-color: rgba(255, 255, 255, 0.345);
     }
 
       /* Optional: Makes the sample page fill the window. */
@@ -168,12 +190,18 @@ body {
 .modal-sm {
     width: 180px;
     text-align: center;
-    margin: 50%;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     font-family: europa, sans-serif;
     border-radius: 15px;
+    border: 2px solid black;
+ 
+}
 
+@media only screen and (max-width: 767px) {
+    modal-sm {
+        text-align: center;
+    }
 }
 
 .okay {
@@ -254,6 +282,19 @@ body {
     letter-spacing: 4px;
     font-weight: 600;
     padding-top: 15px;
+    color: white;
+    padding-bottom: 14px;
+}
+
+.winningCuisine {
+    background-color:#B88B37;
+    width: 375px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.foodImg {
+    margin-top: -80 px;
 }
 
 .result-div {
@@ -275,6 +316,11 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.xo-display {
+    padding: 25px;
+}
+
 
 #o:hover {
     background-color: #B88B37;
@@ -300,6 +346,7 @@ body {
 .infoInfo {
     width: 500px;
     margin-bottom: 50px;
+    height: 375px
 }
 
 .yes-btn {
@@ -319,4 +366,12 @@ body {
     border: 1px solid white;
     padding: 5px;
     color: white;
+}
+
+#x2 {
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px white solid;
+    font-weight: bold;
+    font-family: europa, sans-serif;
 }
