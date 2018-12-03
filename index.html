@@ -7,9 +7,9 @@
   <title>U PICK</title>
 
 
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
@@ -71,30 +71,38 @@
     var playerFourExists = false;
     var gameStarted = false;
 
+ 
+$(document).ready( function(){
+  $(".gameHead").hide();
+  $(".cuisine-display").hide();
+  $("#map").hide();
+  $(".result-div").hide();
+      $("#end-page").hide();
+})
     // Click join button event for dynamically added <button> elements
     $(document).on("click", "#playerOne", function () {
     
-      $(".page").css("background-color", "#DDC7A1");
+      $(".playersContainer").css("background-color", "#DDC7A1");
       $(".player-one-modal").modal("show");
       playerOneExists = true;
       getInGame();
     });
 
     $(document).on("click", "#playerTwo", function () {
-      $(".page").css("background-color", "#CFB17C");
+      $(".playersContainer").css("background-color", "#CFB17C");
       $(".player-two-modal").modal("show");
       playerTwoExists = true;
       getInGame();
     });
     $(document).on("click", "#playerThree", function () {
-      $(".page").css("background-color", "#C39059");
+      $(".playersContainer").css("background-color", "#C39059");
       $(".player-three-modal").modal("show");
       playerThreeExists = true;
       getInGame();
     });
     $(document).on("click", "#playerFour", function () {
-      $(".page").css("background-color", "#B88B38");
-      $(".player-four-modal").modal("show");
+      $(".playersContainer").css("background-color", "#B88B38");
+ 
       playerFourExists = true;
       getInGame();
     });
@@ -102,9 +110,13 @@
     function getInGame() {
       if (playerOneExists && playerTwoExists && playerThreeExists && playerFourExists) {
         gameStarted = true;
+        $(".playersContainer").hide();
+        $(".gameHead").show();
+        $(".cuisine-display").show();
       }
     }
 
+ 
 
 
 
@@ -133,16 +145,16 @@
       createButtons(cuisines)
     }
 
+  
+
 
     var winner;
     var cuisineButton;
     var finalButton;
 
     database.ref("/cuisines").on("value", function (snapshot) {
-      $("#map").hide();
-      $(".result-div").hide();
-      $("#end-page").hide();
-
+  
+      
 
       cuisines = snapshot.val().cuisines;
       var counter = 0;
@@ -158,42 +170,43 @@
         $('.cuisine-display').hide();
         $(".current-players-div").hide();
         $(".result-div").show();
-        $(".playersContainer").hide();
+        $("#eliminate").hide();
+
         $('#correct-answer-id').append(winner);
           if (winner === "Korean") {
-          $('.result-div').css("background-image", "url('assets/korean.jpg')");
-          }
+            $('.foodImg').append("<img src='assets/korean-100.jpg' width='375px'>");
+                    }
           else if (winner === "Chinese") {
-          $('.result-div').css("background-image", "url('assets/chinese.jpg')");
-          }
+            $('.foodImg').append("<img src='assets/chinese-100.jpg' width='375px'>");
+                    }
           else if (winner === "American") {
-          $('.result-div').css("background-image", "url('assets/american.jpg')");
-          }
+            $('.foodImg').append("<img src='assets/american-100.jpg' width='375px'>");
+                    }
           else if (winner === "Filipino") {
-          $('.result-div').css("background-image", "url('assets/filipino.jpg')");
-          }
+            $('.foodImg').append("<img src='assets/fil-100.jpg' width='375px'>");
+                    }
           else if (winner === "Indian")  {
-          $('.result-div').css("background-image", "url('assets/indian.jpg')");
-          }
+            $('.foodImg').append("<img src='assets/indian-100.jpg' width='375px'>");
+                    }
          else  if (winner === "Italian")  {
-          $('.result-div').css("background-image", "url('assets/italian.jpg')");
-          }
-          else if (winner === "Japanese")  {
-          $('.result-div').css("background-image", "url('assets/japanese.jpg')");
-          }
-          else if (winner === "Thai")  {
-          $('.result-div').css("background-image", "url('assets/thai.jpg')");
-          }
-          else if (winner === "Mexican")  {
-          $('.result-div').css("background-image", "url('assets/mexican.jpg')");
-          }
-         else if (winner === "Vietnamese") {
-            $('.result-div').css("background-image", "url('assets/vietnamese.jpg')");
-          }
+          $('.foodImg').append("<img src='assets/italian_1-100.jpg' width='375px'>");
+                    }
 
-        $(document).on("click", "#x", function () {
-          resetGameForAll();
-        })
+          else if (winner === "Japanese")  {
+          $('.foodImg').append("<img src='assets/japanese-100.jpg' width='375px'>");
+          }
+          
+          else if (winner === "Thai")  {
+            $('.foodImg').append("<img src='assets/thai_1-100.jpg' width='375px'>");
+                    }
+          else if (winner === "Mexican")  {
+            $('.foodImg').append("<img src='assets/mexican-100.jpg' width='375px'>");
+                    }
+         else if (winner === "Vietnamese") {
+          $('.foodImg').append("<img src='assets/viet_1-100.jpg' width='375px'>");
+                    }
+
+   
         $(document).on("click", "#o", function () {
           $("#map").show();
           initMap();
@@ -219,19 +232,22 @@
 
     //when user decides to eliminate one of the cuisines
     $(document).on('click', '.cuisine-button', function () {
+    if (!gameStarted) {
+      $(".wait-modal").modal("show");
 
-
-
-      var elimCu = $(this).attr("data-name");
-      for (var i = 0; i < cuisines.length; i++) {
-        if (elimCu === cuisines[i].food) {
-          cuisines[i].eliminated = true;
-          database.ref("/cuisines").set({
-            cuisines: cuisines
-          })
+    } else {
+    var elimCu = $(this).attr("data-name");
+    for(var i = 0; i< cuisines.length; i++){
+        if(elimCu === cuisines[i].food){
+            cuisines[i].eliminated = true;
+            database.ref("/cuisines").set({
+                cuisines: cuisines
+            })
         }
-      }
-    });
+        }
+    }
+});
+
     function createButtons(cuisines) {
       $('.cuisine-display').empty();
       for (var i = 0; i < cuisines.length; i++) {
@@ -310,7 +326,7 @@
 
           //SHOWS USER POSITION
           infoWindow.setPosition(pos);
-          infoWindow.setContent('<p id="uAreHere">You are here<p>');
+          infoWindow.setContent('<p id="uAreHere">YOU<br>ARE<br>HERE<br><p>');
           infoWindow.open(map);
           map.setCenter(pos);
 
@@ -369,17 +385,23 @@
               currentPlaceID = place.place_id;
               currentPlaceName = place.name;
               console.log(currentPlaceID);
-              infowindow.setContent(place.name);
+              infowindow.setContent("<p class='mapTag'>" + place.name + "</p>");
 
            
 
-              $(".infoInfo").append("<p id='placeTitle'>" + place.name + "<p>" + "<br>" + place.vicinity + "<br>" + place.rating + "<br>" + "<p id='priceLvl'></p>" + "<br>" + "<p id='openClose'></p>" + "<br>" + "<button id='goHere'>GO</button>");
+              $(".infoInfo").append("<p id='placeTitle'>" + place.name + "<p id='openClose'></p>" + 
+                 "<p id='vicinity'>" + place.vicinity + "<p>" +  place.rating +  "<p id='priceLvl'></p>" +  "<br>" 
+                + "<button id='goHere'>GO</button>");
+
                if (place.opening_hours.open_now == true) {
-                $("#openClose").append("OPEN")
+                $("#openClose").append("OPEN");
+                $(".infoInfo").css('background-color', '#B88B37');
               }
 
              if (place.opening_hours.open_now == false) {
                 $("#openClose").append("CLOSED")
+                $("#goHere").hide();
+                $(".infoInfo").css('background-color', '#CD3C1D')
               }
 
                if (place.price_level === 1) {
@@ -408,6 +430,7 @@
                   $("#goHere").hide();
                   console.log("egg")
                   $("#map").hide(); 
+                  $("#correct-answer-id").hide();
 
                   $(document).on("click", ".done-btn", function () {
                     resetGameForAll();
@@ -473,8 +496,22 @@
         </p>
       </div>
 
+    <div class="modal fade bd-example-modal-sm wait-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div>
+              Waiting for players...  
+              <br>
+              <button type="button" class="btn btn-secondary okay" data-dismiss="modal">OK</button>
+            </div>
+
+
+          </div>
+        </div>
+
 
       <div class="row playersRow">
+      
 
         <a class="players" id="playerOne" role="button">P 1</a>
         <div class="modal fade bd-example-modal-sm player-one-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -535,27 +572,45 @@
           </div>
         </div>
       </div>
+          <div class="waiting">
+            <img src="assets/Waiting_2.gif" width="375px">
+          </div>
+      
     </div>
   </div>
   <!-- /////////////////////////////////////////////////////////////// -->
+
+  <div class="gameHead">
+<img id="topLogo" src='assets/outlinelogo.png' width='100px'>
+<br>
+<img id="eliminate" src='assets/eliminate.gif' width='100px'>
+  </div>
 
 
   <div class="button-game">
     <div class="container">
       <div class="cuisine-display button">
+
       </div>
     </div>
   </div>
 
 
   <!-- 2. PICKED RESULT PAGE -->
-  <div class=" container result-div ">
-    <img id="upicked" class="img-fluid" src="assets/upickedfix.png" width="300">
-    <!-- <p class="correct-answer">The pick:</p> -->
+  
+
+
+  <div class="container result-div">
+  <!-- <img id="upicked" class="img-fluid" src="assets/upickedthick.png">  -->
+    
+  <div class="foodImg">
+    </div>
 
     <div id="correct-answer-id"></div>
     <br>
-    <button class="xo" id="x">x</button>
+    <a href ="start.html" class="xo" id="x" role="button">x</a>
+
+    <!-- <button class="xo" id="x">x</button> -->
     <button class="xo" id="o">o</button>
 
   </div>
@@ -571,7 +626,7 @@
 
   <div id="map"></div>
 
-  <div class="container infoInfo">
+  <div class="container-fluid infoInfo">
   </div>
 
   <div id="confirm-modal" class="modal " role="dialog">
@@ -598,7 +653,7 @@
     ENJOY!
     <br>
 
-    <button class="done-btn">DONE</button>
+    <a href ="start.html" class="done-btn" role="button">DONE</a>
   </div>
 
 

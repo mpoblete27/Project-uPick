@@ -24,42 +24,63 @@
        * element that contains the map. */
     
        #map {
-           border: 3px solid black;
-           width: 500px;
+           width: 375px;
            margin: 0 auto;
+    
             height: 75%;
       }
 
+.mapTag {
+    font-family: europa, sans-serif;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+          
+}
+#uAreHere {
+    font-family: europa, sans-serif;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+      color: red;
+}
+
 #placeTitle {
+    font-family: europa, sans-serif;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     margin-top: 25px;
     text-transform: none;
 }
-      #uAreHere {
-          font-family: europa, sans-serif;
-            font-size: 14px;
-            text-align: center;
-        
-      }
 
       .infoInfo {
+        font-family: europa, sans-serif;
+          max-width: 375px;
           text-align: center;
           font-family: europa, sans-serif;
-          text-transform: uppercase
+          text-transform: uppercase;
+          color: white;
       }
+
+      #vicinity {
+          text-transform: none;
+      }
+
+     
 
       #goHere {
           background-color: white;
-          color: black;
-          border: 1px solid black;
+          color:#B88B37;
+          margin-bottom: 25px;
+          font-family: europa, sans-serif;
       }
 
       #goHere:hover {
         background-color: black;
         color: white;
         border: 1px solid black;
+       
     }
 
       /* Optional: Makes the sample page fill the window. */
@@ -117,6 +138,11 @@ body {
     margin-bottom: 50px;
 }
 
+.waiting {
+    margin-top: -10px;
+    text-align: center;
+}
+
 .players {
     color: black;
     font-size: 16px;
@@ -168,6 +194,16 @@ body {
     margin-top: 50px;
 }
 
+
+.gameHead {
+    text-align: center;
+}
+
+#topLogo {
+    margin-top: 50px;
+    text-align: center;
+}
+
 .cuisine-display {
     text-align: center;
 }
@@ -206,7 +242,18 @@ body {
 }
 
 #upicked {
-    max-width: 100%;
+    width: 100px;
+    justify-content: center;
+    margin-bottom: 25px
+
+}
+
+#correct-answer-id {
+    font-family: europa, sans-serif;
+    font-size: 36;
+    letter-spacing: 4px;
+    font-weight: 600;
+    padding-top: 15px;
 }
 
 .result-div {
@@ -229,12 +276,18 @@ body {
     padding-bottom: 10px;
 }
 
-.xo:hover {
-    background-color: black;
+#o:hover {
+    background-color: #B88B37;
     color: white;
     border: 1px solid black;
+    text-decoration: none;
 
+}
 
+#x:hover {
+    background-color: #CD3C1D;
+    color: white;
+    border: 1px solid black;
 }
 
 .gobackbtn {
@@ -242,6 +295,11 @@ body {
     border: 1px solid white;
     padding: 5px;
     color: white;
+}
+
+.infoInfo {
+    width: 500px;
+    margin-bottom: 50px;
 }
 
 .yes-btn {
