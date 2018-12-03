@@ -73,29 +73,33 @@
 
     // Click join button event for dynamically added <button> elements
     $(document).on("click", "#playerOne", function () {
+    
+      $(".page").css("background-color", "#DDC7A1");
       $(".player-one-modal").modal("show");
       playerOneExists = true;
       getInGame();
     });
 
     $(document).on("click", "#playerTwo", function () {
+      $(".page").css("background-color", "#CFB17C");
       $(".player-two-modal").modal("show");
       playerTwoExists = true;
       getInGame();
     });
     $(document).on("click", "#playerThree", function () {
+      $(".page").css("background-color", "#C39059");
       $(".player-three-modal").modal("show");
       playerThreeExists = true;
       getInGame();
     });
     $(document).on("click", "#playerFour", function () {
+      $(".page").css("background-color", "#B88B38");
       $(".player-four-modal").modal("show");
       playerFourExists = true;
       getInGame();
     });
     // //////////Function to get in the game
     function getInGame() {
-      $("#player-buttons-display").hide();
       if (playerOneExists && playerTwoExists && playerThreeExists && playerFourExists) {
         gameStarted = true;
       }
@@ -139,6 +143,7 @@
       $(".result-div").hide();
       $("#end-page").hide();
 
+
       cuisines = snapshot.val().cuisines;
       var counter = 0;
       var remainingStuff = [];
@@ -155,7 +160,36 @@
         $(".result-div").show();
         $(".playersContainer").hide();
         $('#correct-answer-id').append(winner);
-
+          if (winner === "Korean") {
+          $('.result-div').css("background-image", "url('assets/korean.jpg')");
+          }
+          else if (winner === "Chinese") {
+          $('.result-div').css("background-image", "url('assets/chinese.jpg')");
+          }
+          else if (winner === "American") {
+          $('.result-div').css("background-image", "url('assets/american.jpg')");
+          }
+          else if (winner === "Filipino") {
+          $('.result-div').css("background-image", "url('assets/filipino.jpg')");
+          }
+          else if (winner === "Indian")  {
+          $('.result-div').css("background-image", "url('assets/indian.jpg')");
+          }
+         else  if (winner === "Italian")  {
+          $('.result-div').css("background-image", "url('assets/italian.jpg')");
+          }
+          else if (winner === "Japanese")  {
+          $('.result-div').css("background-image", "url('assets/japanese.jpg')");
+          }
+          else if (winner === "Thai")  {
+          $('.result-div').css("background-image", "url('assets/thai.jpg')");
+          }
+          else if (winner === "Mexican")  {
+          $('.result-div').css("background-image", "url('assets/mexican.jpg')");
+          }
+         else if (winner === "Vietnamese") {
+            $('.result-div').css("background-image", "url('assets/vietnamese.jpg')");
+          }
 
         $(document).on("click", "#x", function () {
           resetGameForAll();
@@ -337,8 +371,31 @@
               console.log(currentPlaceID);
               infowindow.setContent(place.name);
 
-              $(".infoInfo").append("<p id='placeTitle'>" + place.name + "<p>" + "<br>" + place.vicinity + "<br>" + place.rating + "<br>" + "Price level: " + place.price_level + "<br>" + place.opening_hours.open_now + "<br>" + "<button id='goHere'>GO</button>");
-              infowindow.open(map, this);
+           
+
+              $(".infoInfo").append("<p id='placeTitle'>" + place.name + "<p>" + "<br>" + place.vicinity + "<br>" + place.rating + "<br>" + "<p id='priceLvl'></p>" + "<br>" + "<p id='openClose'></p>" + "<br>" + "<button id='goHere'>GO</button>");
+               if (place.opening_hours.open_now == true) {
+                $("#openClose").append("OPEN")
+              }
+
+             if (place.opening_hours.open_now == false) {
+                $("#openClose").append("CLOSED")
+              }
+
+               if (place.price_level === 1) {
+                $("#priceLvl").append("$")
+               }
+               if (place.price_level === 2) {
+                $("#priceLvl").append("$$")
+               }
+               if (place.price_level === 3) {
+                $("#priceLvl").append("$$$")
+               }
+               if (place.price_level === 4) {
+                $("#priceLvl").append("$$$$")
+               }
+            
+            infowindow.open(map, this);
 
               $("#goHere").on('click', function () {
 
@@ -350,7 +407,8 @@
                   $('#confirm-modal').modal('hide');
                   $("#goHere").hide();
                   console.log("egg")
-                  $("#map").hide();
+                  $("#map").hide(); 
+
                   $(document).on("click", ".done-btn", function () {
                     resetGameForAll();
                   })
@@ -491,9 +549,9 @@
 
 
   <!-- 2. PICKED RESULT PAGE -->
-  <div class=" container result-div">
-
-    <p class="correct-answer">The pick:</p>
+  <div class=" container result-div ">
+    <img id="upicked" class="img-fluid" src="assets/upickedfix.png" width="300">
+    <!-- <p class="correct-answer">The pick:</p> -->
 
     <div id="correct-answer-id"></div>
     <br>
@@ -512,7 +570,7 @@
   <!-- 3. RESULTS MAP PAGE -->
 
   <div id="map"></div>
-  </div>
+
   <div class="container infoInfo">
   </div>
 
@@ -534,8 +592,8 @@
   
 
 
-
   <!--  4. FINAL PAGE -->
+
   <div class="container lastpage" id="end-page">
     ENJOY!
     <br>

@@ -1,3 +1,25 @@
+ 
+
+
+ .startlogo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+ #presstoenter {
+     margin-left: 40%;
+  
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
     
@@ -74,11 +96,7 @@ body {
     font-family: europa, sans-serif;
 }
 
-.startlogo {
-  text-align: center;
-  position: relative;
-  margin-top: 50%;
-}
+
 
 
 .clicktoenter {
@@ -169,7 +187,7 @@ body {
 
 .cuisine-button:hover {
 
-    
+
 }
 
 .cuisine-button:active {
@@ -185,6 +203,10 @@ body {
     letter-spacing: 2px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+#upicked {
+    max-width: 100%;
 }
 
 .result-div {
