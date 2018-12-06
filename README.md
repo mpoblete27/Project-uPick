@@ -19,6 +19,10 @@ In order for us to achieve the final product of the application, we used many va
 This application can be deployed on GitHub [Project-uPick](https://mpoblete27.github.io/Project-uPick/).
 
 ### Wireframe
+![alt text](https://github.com/mpoblete27/Project-uPick/blob/javascript_logic/wireframe1.gif)
+![alt text](https://github.com/mpoblete27/Project-uPick/blob/javascript_logic/wireframe2.gif)
+
+
 
 ### Authors
 - Sherrie Lin
