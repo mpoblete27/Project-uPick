@@ -40,6 +40,13 @@
         <p class="final-final">
             <div id="final-final-id"></div>
             <br>
+
+            <!-- When done function is run-->
+            <div class="done">
+
+                <div class="done-button"></div>
+            </div>
+
             <hr>
             <div>
                 <h3 class="">Trending:
@@ -146,23 +153,23 @@
 
                 // hide everything, show results
 
-                // function resetGameForAll(){
-                //     var cuisines = [{food: 'American', eliminated: false },
-                //                     {food: 'Chinese', eliminated: false },
-                //                     {food: 'Filipino', eliminated: false },
-                //                     {food: 'Indian', eliminated: false },
-                //                     {food: 'Italian', eliminated: false },
-                //                     {food: 'Japanese', eliminated: false },
-                //                     {food: 'Korean', eliminated: false },
-                //                     {food: 'Thai', eliminated: false },
-                //                     {food: 'Mexican', eliminated: false },
-                //                     {food: 'Vietnamese', eliminated: false }];
+                function resetGameForAll() {
+                    var cuisines = [{ food: 'American', eliminated: false },
+                    { food: 'Chinese', eliminated: false },
+                    { food: 'Filipino', eliminated: false },
+                    { food: 'Indian', eliminated: false },
+                    { food: 'Italian', eliminated: false },
+                    { food: 'Japanese', eliminated: false },
+                    { food: 'Korean', eliminated: false },
+                    { food: 'Thai', eliminated: false },
+                    { food: 'Mexican', eliminated: false },
+                    { food: 'Vietnamese', eliminated: false }];
 
-                //     database.ref('/cuisines').set({
-                //         cuisines: cuisines
-                //     });
-                //     createButtons(cuisines)
-                // }
+                    database.ref('/cuisines').set({
+                        cuisines: cuisines
+                    });
+                    createButtons(cuisines)
+                }
 
                 //when user decides to eliminate one of the cuisines
                 $(document).on('click', '.cuisine-button', function () {
@@ -208,8 +215,6 @@
                 var finalPicks = ['in and out', 'mcdonalds', 'super duper', 'burger king', 'smash burger'];
                 var finalFinalPick;
 
-                // <div class="pick-random"></div>
-
                 // Create Randomly Select button
                 var randomButton = $('<button>');
                 randomButton.addClass('pick-random');
@@ -237,6 +242,21 @@
 
                 console.log(pickRandom(finalPicks));
 
+                // Done Function
+                var doneButton = $('.done-button');
+
+                function done() {
+                    $('.done').text("Enjoy your food!");
+                    doneButton = $('<button>');
+                    doneButton.append("Finished");
+                    $('.done').append(doneButton);
+                }
+
+                done();
+
+                doneButton.on('click', function () {
+                    gameOver();
+                });
 
 
 
