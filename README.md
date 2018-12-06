@@ -20,7 +20,7 @@ This application can be deployed on GitHub [Project-uPick](https://mpoblete27.gi
 
 ### Wireframe
 ![alt text](https://github.com/mpoblete27/Project-uPick/blob/javascript_logic/wireframe1.gif)
-![alt text](https://github.com/mpoblete27/Project-uPick/blob/javascript_logic/wireframe2.gif)
+
 
 
 
