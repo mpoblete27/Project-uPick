@@ -65,6 +65,7 @@ $("#end-page").hide();
 
   
     $("#playerOne").css("background-color", "red");
+    $("#playerOne").css("color", "white");
     $("#playerOne").css("border-radius", "50%");
  
 
@@ -76,6 +77,7 @@ $("#end-page").hide();
 
   $(document).on("click", "#playerTwo", function () {
     $("#playerTwo").css("background-color", "yellow");
+    $("#playerTwo").css("color", "white");
     $("#playerTwo").css("border-radius", "50%");
 
 
@@ -85,6 +87,7 @@ $("#end-page").hide();
   });
   $(document).on("click", "#playerThree", function () {
     $("#playerThree").css("background-color", "green");
+    $("#playerThree").css("color", "white");
     $("#playerThree").css("border-radius", "50%");
     // $(".player-three-modal").modal("show");
     playerThreeExists = true;
@@ -92,6 +95,7 @@ $("#end-page").hide();
   });
   $(document).on("click", "#playerFour", function () {
     $("#playerFour").css("background-color", "blue");
+    $("#playerFour").css("color", "white");
     $("#playerFour").css("border-radius", "50%");
 
     playerFourExists = true;
@@ -246,6 +250,7 @@ $("#end-page").hide();
   for(var i = 0; i< cuisines.length; i++){
       if(elimCu === cuisines[i].food){
           cuisines[i].eliminated = true;
+      
           database.ref("/cuisines").set({
               cuisines: cuisines
           })
@@ -259,7 +264,7 @@ $("#end-page").hide();
     for (var i = 0; i < cuisines.length; i++) {
       if (!cuisines[i].eliminated) {
         cuisineButton = $('<button>');
-        cuisineButton.addClass('cuisine-button');
+        cuisineButton.addClass('cuisine-button cuisine-btn-inactive');
         cuisineButton.attr('data-name', cuisines[i].food);
         cuisineButton.text(cuisines[i].food);
         $('.cuisine-display').append(cuisineButton);
@@ -267,6 +272,7 @@ $("#end-page").hide();
       } else {
         cuisineButton = $('<button>');
         cuisineButton.addClass('cuisine-button strike');
+        
         cuisineButton.attr('data-name', cuisines[i].food);
         cuisineButton.text(cuisines[i].food);
         $('.cuisine-display').append(cuisineButton);
