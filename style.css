@@ -172,19 +172,40 @@ body {
 .players {
     color: black;
     font-size: 16px;
-    padding: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
     border: 1px solid black;
     margin-top: 10px;
     margin-bottom: 10px;
+    transition: all 0.5s ease;
 }
 .players:hover {
     color: white;
     font-size: 16px;
-    padding: 10px;
     background-color: black;
     margin-top: 10px;
     margin-bottom: 10px;
     text-decoration: none;
+    border-radius: 50%;
+}
+
+
+.div-animate {
+    transform: translateY(-1000px);
+    transition: 2s;
+}
+
+/* .div-animate-in {
+    transform: translateY(-1000px);
+    transition: 2s;
+} */
+
+
+
+#playerOne:focus {
+    transform: translateY(25px);
 }
 
 /* .lolmodal{
@@ -236,7 +257,12 @@ body {
     text-align: center;
 }
 
+
+
+
+
 .cuisine-display {
+    margin-top: -175px;
     text-align: center;
 }
 
@@ -251,11 +277,6 @@ body {
     letter-spacing: 2px;
     padding-left: 20px;
     padding-right: 20px;
-}
-
-.cuisine-button:hover {
-
-
 }
 
 .cuisine-button:active {
@@ -305,8 +326,9 @@ body {
     text-align: center;
     font-family: europa, sans-serif;
     text-transform: uppercase;
-    margin-top: 50px;
+    margin-top: -450px;
     font-size: 24px;
+    
 }
 
 .xo {

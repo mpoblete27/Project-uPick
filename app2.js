@@ -62,44 +62,62 @@ $("#end-page").hide();
 })
   // Click join button event for dynamically added <button> elements
   $(document).on("click", "#playerOne", function () {
+
   
-    // $(".playersContainer").css("background-color", "#DDC7A1");
+    $("#playerOne").css("background-color", "red");
+    $("#playerOne").css("border-radius", "50%");
+ 
+
+
     // $(".player-one-modal").modal("show");
     playerOneExists = true;
     getInGame();
   });
 
   $(document).on("click", "#playerTwo", function () {
-    // $(".playersContainer").css("background-color", "#CFB17C");
+    $("#playerTwo").css("background-color", "yellow");
+    $("#playerTwo").css("border-radius", "50%");
+
+
     // $(".player-two-modal").modal("show");
     playerTwoExists = true;
     getInGame();
   });
   $(document).on("click", "#playerThree", function () {
-    // $(".playersContainer").css("background-color", "#C39059");
+    $("#playerThree").css("background-color", "green");
+    $("#playerThree").css("border-radius", "50%");
     // $(".player-three-modal").modal("show");
     playerThreeExists = true;
     getInGame();
   });
   $(document).on("click", "#playerFour", function () {
-    // $(".playersContainer").css("background-color", "#B88B38");
+    $("#playerFour").css("background-color", "blue");
+    $("#playerFour").css("border-radius", "50%");
 
     playerFourExists = true;
     getInGame();
   });
+
+
+
+
+
+
+
+
   // //////////Function to get in the game
   function getInGame() {
     if (playerOneExists && playerTwoExists && playerThreeExists && playerFourExists) {
       gameStarted = true;
-      $(".playersContainer").hide();
+   
+      $(".playersContainer").addClass("div-animate");
       $("#eliminate").show();
-      $(".cuisine-display").show();
+
+      setTimeout(function(){
+        $(".cuisine-display").show();
+      },500);
     }
   }
-
-
-
-
 
 
   //////////////////////// MAIN GAME //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,10 +166,17 @@ $("#end-page").hide();
     });
     if (counter === 1) {
       winner = remainingStuff.pop()
-      $('.cuisine-display').hide();
-      $(".current-players-div").hide();
-      $(".result-div").show();
-      $("#eliminate").hide();
+      $('.cuisine-display').addClass("div-animate");
+      $(".current-players-div").addClass("div-animate");
+      $("#eliminate").addClass("div-animate");
+
+      setTimeout(function(){
+        $(".result-div").show();
+      },500);
+
+
+
+
 
       $('#correct-answer-id').append(winner);
         if (winner === "Korean") {
