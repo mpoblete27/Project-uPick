@@ -18,13 +18,14 @@
 <div class="container start-page">   
     <a href="upick.html" id="start-game">
         <img id="start"  src="assets/upicklogo3d.png">
+        <img id="pressing" src="assets/outlinelogo.png">
     </a>
   
 </div>
 
- <div class="container start-page2">
+ <!-- <div class="container start-page2">
   <img id="presstoenter" src="assets/presstoenter.gif" width="100">
-</div> 
+</div>  -->
 
 
 
@@ -47,11 +48,21 @@
        var database = firebase.database();    
 
 
-// $("#on").hide();
+       $(document).ready(function() {
+           $("#pressing").hide();
+       })
 
-//         $('#start-game').mousedown(function () {  
-//             $("#off").hide();
-//             $("#on").show();
+       $("#start").mouseenter(function() {
+           $("#start").hide();
+           $("#pressing").show();
+       })
+
+       $("#pressing").mouseleave(function() {
+           $("#start").show();
+           $("#pressing").hide();
+       })
+
+
        
         $('#start-game').on('click', function () {
             resetGameForAll();
