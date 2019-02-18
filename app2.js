@@ -195,36 +195,36 @@ database.ref("/cuisines").on("value", function (snapshot) {
 
         $('#correct-answer-id').append(winner);
         if (winner === "korean") {
-            $('.foodImg').append( "<img src='assets/korean-100.jpg' width='375px'>");
+            $('.foodImg').append( "<img src='assets/cuisines/korean-100.jpg' width='375px'>");
         }
         else if (winner === "chinese") {
-            $('.foodImg').append("<img src='assets/chinese-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/chinese-100.jpg' width='375px'>");
         }
         else if (winner === "american") {
-            $('.foodImg').append("<img src='assets/american-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/american-100.jpg' width='375px'>");
         }
         else if (winner === "filipino") {
-            $('.foodImg').append("<img src='assets/fil-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/fil-100.jpg' width='375px'>");
         }
         else if (winner === "indian") {
-            $('.foodImg').append("<img src='assets/indian-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/indian-100.jpg' width='375px'>");
         }
         else if (winner === "italian") {
-            $('.foodImg').append("<img src='assets/italian_1-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/italian_1-100.jpg' width='375px'>");
         }
 
         else if (winner === "japanese") {
-            $('.foodImg').append("<img src='assets/japanese-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/japanese-100.jpg' width='375px'>");
         }
 
         else if (winner === "thai") {
-            $('.foodImg').append("<img src='assets/thai_1-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/thai_1-100.jpg' width='375px'>");
         }
         else if (winner === "mexican") {
-            $('.foodImg').append("<img src='assets/mexican-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/mexican-100.jpg' width='375px'>");
         }
         else if (winner === "vietnamese") {
-            $('.foodImg').append("<img src='assets/viet_1-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/viet_1-100.jpg' width='375px'>");
         }
 
 
