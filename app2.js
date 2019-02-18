@@ -1,7 +1,4 @@
-// Initialize Firebase
-
-
-
+/////////////////////// INITIALIZE FIREBASE /////////////////////// 
 var config = {
     apiKey: "AIzaSyBMHL9um8Nsoy3vj8CPWIZuaG3QvKDgYys",
     authDomain: "upick-d5758.firebaseapp.com",
@@ -12,10 +9,11 @@ var config = {
 };
 firebase.initializeApp(config);
 
-// Create a variable to reference the database
+
 var database = firebase.database();
-// -----------------------------
+
 // connectionsRef references a specific location in our database.
+
 // All of our connections will be stored in this directory.
 var connectionsRef = database.ref("/connections");
 // '.info/connected' is a special location provided by Firebase that is updated
@@ -39,11 +37,15 @@ connectionsRef.on("value", function (snap) {
     $("#connected-viewers").text(snap.numChildren());
 });
 
+/////////////////////// UPICK /////////////////////// 
+
+
+
 var playersRef = database.ref("players");
 var cuisineButton;
 var finalButton;
 var currentPlayers = null;
-var playerTurns = 2; //*** this will decrease to 0  !!!!!!!!!!****************
+var playerTurns = 2; 
 var playerNum = false;
 var playerOneExists = false;
 var playerTwoExists = false;
@@ -51,7 +53,7 @@ var playerThreeExists = false;
 var playerFourExists = false;
 var gameStarted = false;
 
-
+/////////////////////// PART 1 SETUP /////////////////////// 
 $(document).ready(function () {
     $("#eliminate").hide();
     $(".cuisine-display").hide();
@@ -61,6 +63,9 @@ $(document).ready(function () {
     $("#end-page").hide();
     resetGameForAll();
 })
+
+/////////////////////// PLAYERS /////////////////////// 
+
 // Click join button event for dynamically added <button> elements
 $(document).on("click", "#playerOne", function () {
 
@@ -110,7 +115,7 @@ $(document).on("click", "#playerFour", function () {
 
 
 
-// //////////Function to get in the game
+/////////////////////// ENTER GAME /////////////////////// 
 function getInGame() {
     if (playerOneExists && playerTwoExists && playerThreeExists && playerFourExists) {
         gameStarted = true;
@@ -125,29 +130,19 @@ function getInGame() {
 }
 
 
-//////////////////////// MAIN GAME //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var american = "🇺🇸"
-var chinese = "🇨🇳"
-var filipino = "🇵🇭"
-var indian = "🇮🇳"
-var italian = "🇮🇹"
-var japanese = "🇯🇵"
-var korean = "🇰🇷"
-var thai = "🇹🇭"
-var mexican = "🇲🇽"
-var vietnamese = "🇻🇳"
+/////////////////////// RESET GAME FUNCTION /////////////////////// 
 
 function resetGameForAll() {
-    var cuisines = [{ food: american, eliminated: false },
-    { food: chinese, eliminated: false },
-    { food: filipino, eliminated: false },
-    { food: indian, eliminated: false },
-    { food: italian, eliminated: false },
-    { food: japanese, eliminated: false },
-    { food: korean, eliminated: false },
-    { food: thai, eliminated: false },
-    { food: mexican, eliminated: false },
-    { food: vietnamese, eliminated: false }];
+    var cuisines = [{ food: "american",flag: "🇺🇸", eliminated: false },
+    { food: "chinese", flag: "🇨🇳",eliminated: false },
+    { food: "filipino",flag: "🇵🇭", eliminated: false },
+    { food: "indian",flag: "🇮🇳", eliminated: false },
+    { food: "italian",flag: "🇮🇹", eliminated: false },
+    { food: "japanese",flag: "🇯🇵", eliminated: false },
+    { food: "korean",flag: "🇰🇷", eliminated: false },
+    { food: "thai", flag: "🇹🇭", eliminated: false },
+    { food: "mexican", flag: "🇲🇽",eliminated: false },
+    { food: "vietnamese",flag:"🇻🇳", eliminated: false }];
     var players = [{ player: 'playerOne', playerOneExists: false, turns: 0 },
     { player: 'playerTwo', playerTwoExists: false, turns: 0 },
     { player: 'playerThree', playerThreeExists: false, turns: 0 },
@@ -161,7 +156,7 @@ function resetGameForAll() {
 
 
 
-
+/////////////////////// WINNER VARIABLE /////////////////////// 
 
 
 var winner;
@@ -183,6 +178,7 @@ database.ref("/cuisines").on("value", function (snapshot) {
     });
     if (counter === 1) {
         winner = remainingStuff.pop()
+        console.log(winner);
         $('.cuisine-display').addClass("div-animate");
         $(".current-players-div").addClass("div-animate");
         $("#eliminate").addClass("div-animate");
@@ -198,46 +194,48 @@ database.ref("/cuisines").on("value", function (snapshot) {
 
 
         $('#correct-answer-id').append(winner);
-        if (winner === korean) {
-            $('.foodImg').append("<img src='assets/korean-100.jpg' width='375px'>");
+        if (winner === "korean") {
+            $('.foodImg').append( "<img src='assets/korean-100.jpg' width='375px'>");
         }
-        else if (winner === chinese) {
+        else if (winner === "chinese") {
             $('.foodImg').append("<img src='assets/chinese-100.jpg' width='375px'>");
         }
-        else if (winner === american) {
+        else if (winner === "american") {
             $('.foodImg').append("<img src='assets/american-100.jpg' width='375px'>");
         }
-        else if (winner === filipino) {
+        else if (winner === "filipino") {
             $('.foodImg').append("<img src='assets/fil-100.jpg' width='375px'>");
         }
-        else if (winner === indian) {
+        else if (winner === "indian") {
             $('.foodImg').append("<img src='assets/indian-100.jpg' width='375px'>");
         }
-        else if (winner === italian) {
+        else if (winner === "italian") {
             $('.foodImg').append("<img src='assets/italian_1-100.jpg' width='375px'>");
         }
 
-        else if (winner === japanese) {
+        else if (winner === "japanese") {
             $('.foodImg').append("<img src='assets/japanese-100.jpg' width='375px'>");
         }
 
-        else if (winner === thai) {
+        else if (winner === "thai") {
             $('.foodImg').append("<img src='assets/thai_1-100.jpg' width='375px'>");
         }
-        else if (winner === mexican) {
+        else if (winner === "mexican") {
             $('.foodImg').append("<img src='assets/mexican-100.jpg' width='375px'>");
         }
-        else if (winner === vietnamese) {
+        else if (winner === "vietnamese") {
             $('.foodImg').append("<img src='assets/viet_1-100.jpg' width='375px'>");
         }
 
 
+        /////////////////////// xo animation 
         $(document).on("click", "#o", function () {
             $("#map").show();
             initMap();
             $(".xo-display").hide();
             $(".foodImg").hide();
         })
+
 
         $("#o").mouseenter(function () {
             $("#followA").fadeIn();
@@ -267,7 +265,7 @@ database.ref("/cuisines").on("value", function (snapshot) {
             $("#x").mousemove(function (event) {
 
                 $("#followB").offset({
-                    left: event.pageX - 40,
+                    left: event.pageX - 60,
                     top: event.pageY - 15
 
                 })
@@ -278,19 +276,18 @@ database.ref("/cuisines").on("value", function (snapshot) {
         $("#x").mouseleave(function () {
             $("#followB").hide();
         })
-
-
-
-
+        
     }
 
-
+       /////////////////////// xo animation end
 
 
 
     createButtons(cuisines);
 });
-// click handler to start game and generate cuisine buttons
+
+
+/////////////////////// START GAME /////////////////////// 
 $('#start-game').on('click', function () {
     resetGameForAll();
 });
@@ -298,13 +295,6 @@ $('#start-game').on('click', function () {
 
 
 
-
-
-
-
-
-
-//when user decides to eliminate one of the cuisines
 $(document).on('click', '.cuisine-button', function () {
     if (!gameStarted) {
         $(".wait-modal").modal("show");
@@ -312,7 +302,7 @@ $(document).on('click', '.cuisine-button', function () {
     } else {
         var elimCu = $(this).attr("data-name");
         for (var i = 0; i < cuisines.length; i++) {
-            if (elimCu === cuisines[i].food) {
+            if (elimCu === cuisines[i].flag) {
                 cuisines[i].eliminated = true;
 
                 database.ref("/cuisines").set({
@@ -329,23 +319,23 @@ function createButtons(cuisines) {
         if (!cuisines[i].eliminated) {
             cuisineButton = $('<button>');
             cuisineButton.addClass('cuisine-button cuisine-btn-inactive');
-            cuisineButton.attr('data-name', cuisines[i].food);
-            cuisineButton.text(cuisines[i].food);
+            cuisineButton.attr('data-name', cuisines[i].flag);
+            cuisineButton.text(cuisines[i].flag);
             $('.cuisine-display').append(cuisineButton);
 
         } else {
             cuisineButton = $('<button>');
             cuisineButton.addClass('cuisine-button strike');
 
-            cuisineButton.attr('data-name', cuisines[i].food);
-            cuisineButton.text(cuisines[i].food);
+            cuisineButton.attr('data-name', cuisines[i].flag);
+            cuisineButton.text(cuisines[i].flag);
             $('.cuisine-display').append(cuisineButton);
-     
+
         }
 
         if (i === 1) {
             $(".cuisine-display").append("<br>");
-        } else  if (i === 3) {
+        } else if (i === 3) {
             $(".cuisine-display").append("<br>");
         } else if (i === 5) {
             $(".cuisine-display").append("<br>");
@@ -363,9 +353,7 @@ function gameOver() {
 
 
 
-//////////////////////// RESULTS MAP //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+/////////////////////// MAP /////////////////////// 
 
 
 var map, infoWindow;
@@ -474,8 +462,9 @@ function initMap() {
                     console.log(currentPlaceID);
                     infowindow.setContent("<p class='mapTag'>" + place.name + "</p>");
 
+/////////////////////// RESULTS DIV /////////////////////// 
 
-                        $(".infoInfo").show();
+                    $(".infoInfo").show();
                     $(".infoInfo").append("<p id='placeTitle'>" + place.name + "<p id='openClose'></p>" +
                         "<p id='vicinity'>" + place.vicinity + "<p>" + place.rating + "<p id='priceLvl'></p>" + "<br>"
                         + "<button id='goHere'>GO</button>" + "<br>" + "<a href ='index.html' class='xo' id='x2' role='button'>START OVER</a>");
@@ -507,6 +496,8 @@ function initMap() {
                     }
 
                     infowindow.open(map, this);
+
+                    /////////////////////// FINAL PAGE /////////////////////// 
 
                     $("#goHere").on('click', function () {
 

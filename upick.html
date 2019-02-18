@@ -7,11 +7,12 @@
   <title>U PICK</title>
 
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-  crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
@@ -25,27 +26,27 @@
 <body>
 
   <!-- 1. BUTTON GAME -->
-  <div class=" container"> 
-     <div class="gameHead">
-<img id="topLogo" src='assets/flatlogofill.png' width='100px'>
-<br>
-<br>
-<img id="eliminate" src='assets/eliminate.gif' width='100px'>
-  </div>
+  <div class=" container">
+    <div class="gameHead">
+      <img id="topLogo" src='assets/flatlogofill.png' width='100px'>
+      <br>
+      <br>
+      <img id="eliminate" src='assets/eliminate.gif' width='100px'>
+    </div>
 
 
 
-  <!-- PLAYERS CONTAINER -->
+    <!-- PLAYERS CONTAINER -->
     <div class="playersContainer">
       <div class="current-players-div">
         <p class="">PLAYERS:
-         
+
           <span id="connected-viewers"></span>
-        </p> 
+        </p>
         <br>
       </div>
 
-    <!-- <div class="modal fade bd-example-modal-sm wait-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+      <!-- <div class="modal fade bd-example-modal-sm wait-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-sm">
             <div>
@@ -60,13 +61,13 @@
 
 
       <div class="row playersRow">
-      
+
 
         <a class="players" id="playerOne" role="button">P 1</a>
 
 
-        <div class="modal fade bd-example-modal-sm player-one-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-          aria-hidden="true">
+        <div class="modal fade bd-example-modal-sm player-one-modal" tabindex="-1" role="dialog"
+          aria-labelledby="mySmallModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm">
             <div>
               You are Player 1
@@ -82,8 +83,8 @@
 
 
         <a class="players" id="playerTwo" role="button">P 2</a>
-        <div class="modal fade bd-example-modal-sm player-two-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-          aria-hidden="true">
+        <div class="modal fade bd-example-modal-sm player-two-modal" tabindex="-1" role="dialog"
+          aria-labelledby="mySmallModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm">
             <div>
               You are Player 2
@@ -96,8 +97,8 @@
         </div>
 
         <a class="players" id="playerThree" role="button">P 3</a>
-        <div class="modal  bd-example-modal-sm player-three-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-          aria-hidden="true">
+        <div class="modal  bd-example-modal-sm player-three-modal" tabindex="-1" role="dialog"
+          aria-labelledby="mySmallModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm">
             <div>
               You are Player 3
@@ -110,8 +111,8 @@
         </div>
 
         <a class="players" id="playerFour" role="button">P 4</a>
-        <div class="modal fade bd-example-modal-sm player-four-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-          aria-hidden="true">
+        <div class="modal fade bd-example-modal-sm player-four-modal" tabindex="-1" role="dialog"
+          aria-labelledby="mySmallModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm">
             <div>
               You are player 4
@@ -123,10 +124,10 @@
           </div>
         </div>
       </div>
-          <div class="waiting">
-            <img src="assets/Waiting_2.gif" width="350px">
-          </div>
-      
+      <div class="waiting">
+        <img src="assets/Waiting_2.gif" width="350px">
+      </div>
+
     </div>
   </div>
   <!-- /////////////////////////////////////////////////////////////// -->
@@ -144,58 +145,71 @@
 
 
   <!-- 2. PICKED RESULT PAGE -->
-  
+
 
 
   <div class="container result-div">
-  <!-- <img id="upicked" class="img-fluid" src="assets/upickedthick.png">  -->
+    <!-- <img id="upicked" class="img-fluid" src="assets/upickedthick.png">  -->
     <div class="winningCuisine" id="correct-answer-id"></div>
 
-  <div class="foodImg">
+    <div class="foodImg">
     </div>
 
-    
 
-   <div class="xo-display">
-    <a href ="index.html" class="xo" id="x" role="button">x <img id="followB" src="assets/redo-fill.png" height="20px"> </a>
-     
-    <!-- <button class="xo" id="x">x</button> -->
-    <a class="xo" id="o" role="button">o <img id="followA" src="assets/go_2.png" height="20px"> </a>
 
-    <!-- <button class="xo" id="o">o</button> -->
+    <div class=" xo-display">
+
+
+      <a href="index.html" class="xo" id="x" role="button"> 
+        <img id="rotate-replay"src="assets/replay2.png" width="40px">
+        <img id="followB" src="assets/replay-bubble.png" height="20px">
+      
+      </a>
+
+
+
+
+      <a class="xo" id="o" role="button">
+        <img id="followA" src="assets/go_2.png" height="20px">
+        <img id="rotate-go" src="assets/go2.png" width="40px">
+      
+      </a>
+
+
+
+    </div>
+
+
 
   </div>
-
-
-</div>
 
 
 
 
 
   <!-- 3. RESULTS MAP PAGE -->
-  
+
   <div class="container-fluid infoInfo">
   </div>
   <div id="map"></div>
 
 
   <div id="confirm-modal" class="modal " role="dialog">
-      <div class="modal-dialog modal-sm">
-        <div width="180px">
-         Pick
-          <p class="selected-restaurant-name"></p>
-          ?
-          <br>
-          <button type="button" class="btn btn-secondary gobackbtn" data-dismiss="modal">Back</button>
-          <button type="button" class="btn btn-primary yes-btn ">Yes pls!</button>
-        </div>
-
-
+    <div class="modal-dialog modal-sm">
+      <div width="180px">
+        Pick
+        <p class="selected-restaurant-name"></p>
+        ?
+        <br>
+        <button type="button" class="btn btn-secondary gobackbtn" data-dismiss="modal">Back</button>
+        <button type="button" class="btn btn-primary yes-btn ">Yes pls!</button>
       </div>
-    </div>
 
-  
+
+    </div>
+  </div>
+
+
 
 
   <!--  4. FINAL PAGE -->
@@ -210,7 +224,8 @@
 
 
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW2P5znpC7asNyzcITnoDRVOutOYjmPzU&callback=initMap&libraries=places"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW2P5znpC7asNyzcITnoDRVOutOYjmPzU&callback=initMap&libraries=places"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW2P5znpC7asNyzcITnoDRVOutOYjmPzU&libraries=places&callback=initMap" async defer></script> -->
 </body>
 

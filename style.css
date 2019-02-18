@@ -50,7 +50,7 @@
        #map {
            width: 375px;
            margin: 0 auto;
-    
+    /* margin-top: -450px; */
             height: 75%;
       }
 
@@ -347,7 +347,7 @@ body {
 .xo {
     background-color: white;
     color: black;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-left: 25px;
     margin-right: 25px;
     padding-left: 20px;
@@ -362,18 +362,47 @@ body {
 
 
 #o:hover {
-    background-color: #B88B37;
-    color: white;
-    border: 1px solid black;
+
     text-decoration: none;
+
 
 }
 
 #x:hover {
-    background-color: #CD3C1D;
-    color: white;
-    border: 1px solid black;
+
+    text-decoration: none;
 }
+
+
+#rotate-replay{
+    transform: rotate(0);
+    transition: transform 2s ease;  
+  }
+  
+  #rotate-replay:hover {
+      transform: rotate(-1000deg); /* Standard syntax */
+  }
+
+  #rotate-go{
+    transform: rotate(0);
+    transition: transform 2s ease;  
+  }
+  
+  #rotate-go:hover {
+      transform: rotate(-1000deg); /* Standard syntax */
+  }
+
+
+#followB {
+    position: absolute;
+    z-index: 5;
+}
+
+#followA {
+    position: absolute;
+    z-index: 5;
+}
+
 
 .gobackbtn {
     background-color: black;
@@ -386,6 +415,7 @@ body {
     width: 500px;
     margin-bottom: 50px;
     height: 375px
+    
 }
 
 .yes-btn {
