@@ -262,7 +262,7 @@ body {
 
 
 .cuisine-display {
-    margin-top: -175px;
+    margin-top: -50px;
     text-align: center;
 }
 
@@ -277,14 +277,15 @@ body {
     letter-spacing: 2px;
     padding-left: 20px;
     padding-right: 20px;
-
+    box-shadow: 5px  5px black;
+    font-size: 24px;
 
 }
 
 .cuisine-btn-inactive {
     background-size: 200% 100%;
     background-image: linear-gradient(to right, white 50%, orange 50%);
-    transition: background-position 1s;
+    transition: background-position 0.7s;
 }
 
 .cuisine-btn-inactive:hover {
