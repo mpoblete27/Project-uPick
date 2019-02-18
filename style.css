@@ -257,7 +257,16 @@ body {
     text-align: center;
 }
 
+.topLogo-animate {
+    transform: translateX(-300px) rotate(-180deg);
+    transition:  0.8s ;
+}
 
+.topLogo-animateB {
+    transform: translateX(0) rotate(0deg);
+    transition:  0.8s ;
+
+}
 
 
 
@@ -380,7 +389,7 @@ body {
   }
   
   #rotate-replay:hover {
-      transform: rotate(-1000deg); /* Standard syntax */
+      transform: rotate(infinite); /* Standard syntax */
   }
 
   #rotate-go{

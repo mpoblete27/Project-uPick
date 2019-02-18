@@ -1,3 +1,5 @@
+
+
 /////////////////////// INITIALIZE FIREBASE /////////////////////// 
 var config = {
     apiKey: "AIzaSyBMHL9um8Nsoy3vj8CPWIZuaG3QvKDgYys",
@@ -119,7 +121,16 @@ $(document).on("click", "#playerFour", function () {
 function getInGame() {
     if (playerOneExists && playerTwoExists && playerThreeExists && playerFourExists) {
         gameStarted = true;
+        $("#topLogo").addClass("topLogo-animate");
+        setTimeout(function () {
+            $("#topLogo").removeClass("topLogo-animate");
+        }, 1000);
+        setTimeout(function () {
+       
+            $("#topLogo").addClass("topLogo-animateB");
+        }, 1000);
 
+  
         $(".playersContainer").addClass("div-animate");
         $("#eliminate").show();
 
@@ -179,6 +190,9 @@ database.ref("/cuisines").on("value", function (snapshot) {
     if (counter === 1) {
         winner = remainingStuff.pop()
         console.log(winner);
+
+        /////////////////////// PART 2 SETUP /////////////////////// 
+$("#topLogo").addClass("topLogo-animate")
         $('.cuisine-display').addClass("div-animate");
         $(".current-players-div").addClass("div-animate");
         $("#eliminate").addClass("div-animate");
@@ -189,7 +203,7 @@ database.ref("/cuisines").on("value", function (snapshot) {
             $("#followB").hide();
         }, 500);
 
-
+     ///////////////////////////////////////////////////////////////
 
 
 
