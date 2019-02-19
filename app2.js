@@ -504,9 +504,9 @@ function initMap() {
                   
 
 
-                    $(".infoInfo").append( "<br>"+ "<br>"+ "<p id='placeTitle'>" + place.name + "<p id='openClose'></p>" +
-                        "<p id='vicinity'>" + place.vicinity + "<p id='rating'></p>" + place.rating + "<p id='priceLvl'></p>" + "<br>"
-                       + "<a href ='index.html'   id='replay-again' class='xo'  role='button'> <img class='followB' src='assets/replay-bubble.png' height='20px'><img class='rotate-replay' src='assets/replay2.png' width='40px'></a>" + " <img class='followA' src='assets/go_2.png' height='20px'><img src='assets/go2.png'  class = 'rotate-go' id='goHere' width='40px'>" );
+                    $(".infoInfo").append( "<p id='placeTitle'>" + place.name + "<br>"+"<br>"+"<p id='openClose'></p>" +
+                        "<p id='vicinity'>" + place.vicinity + "<p id='rating'></p>" + place.rating +  "<br>"+"<br>"+"<p id='priceLvl'></p>" + "<br>"
+                       + "<a href ='index.html'   id='replay-again'  role='button'> <img class='followB' src='assets/replay-bubble.png' height='20px'><img class='rotate-replay' src='assets/replay2.png' width='40px'></a>"+ "<img src='assets/go2.png'  class = 'rotate-go' id='goHere' width='40px'> <img class='followA' src='assets/go_2.png' height='20px'>" );
                        console.log(place.photos)
 
                     
@@ -524,7 +524,8 @@ function initMap() {
                         $(".followA").hide();
                         $("#x2").show();
                         $(".infoInfo").css('background-color', 'white')
-                        $(".infoInfo").css('border', '2px solid black ')
+                        $(".infoInfo").css('border', '1px solid black ')
+                        $("#replay-again").css('margin-right', '0px')
                     }
 
                     if (place.price_level === 1) {
@@ -631,6 +632,7 @@ function initMap() {
 
                         $("#goHere").on("click", function () {
                             $("#end-page").show();
+                            $("#replay-again").css('margin-right', '0px')
                             // $('#confirm-modal').modal('hide');
                             $("#goHere").hide();
                             console.log("egg")

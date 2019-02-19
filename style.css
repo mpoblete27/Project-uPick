@@ -64,7 +64,7 @@
     /* margin-top: -450px; */
             height: 500px;
             border-radius: 25px;
-            box-shadow: 0px 0px 20px black;
+            /* box-shadow: 0px 0px 20px black; */
       }
       
 
@@ -83,20 +83,6 @@
       color: red;
 }
 
-#placeTitle {
-    font-family: europa, sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 25px;
-    text-transform: none;
-}
-
-    
-
-      #vicinity {
-          text-transform: none;
-      }
 
      
 
@@ -333,7 +319,7 @@ body {
 
 .win-image {
     border-radius: 25px;
-    box-shadow: 0px 0px 20px #EF3B24;
+    /* box-shadow: 0px 0px 20px #EF3B24; */
 }
 
 #upicked {
@@ -403,6 +389,14 @@ body {
 }
 
 
+#goHere {
+    margin-left: 43px;
+}
+
+#replay-again {
+    margin-right: 43px;
+}
+
 .rotate-replay{
     transform: rotate(0);
     transition: transform 2s ease;  
@@ -411,6 +405,7 @@ body {
   .rotate-replay:hover {
       transform: rotate(-1000deg); /* Standard syntax */
   }
+
 
   .rotate-go{
     transform: rotate(0);
@@ -433,12 +428,12 @@ body {
 }
 
 
-.gobackbtn {
+/* .gobackbtn {
     background-color: black;
     border: 1px solid white;
     padding: 5px;
     color: white;
-}
+} */
 
 .infoInfo {
     margin-top: 15px;
@@ -456,21 +451,54 @@ body {
       background-color: white;
 }
 
-.yes-btn {
+#placeTitle {
+    font-family: europa, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 25px;
+    text-transform: none;
+}
+
+    
+
+      #vicinity {
+        font-weight: inherit;
+        font-size: 14px;
+        text-transform: none;
+      }
+
+      #priceLvl {
+        font-weight: inherit;
+          font-size: 14px;
+          text-transform: none;
+      }
+
+      #rating {
+        font-weight: inherit;
+          font-size: 14px;
+          text-transform: none;
+      }
+
+
+
+
+
+/* .yes-btn {
     background-color: black;
     border: 1px solid white;
     padding: 5px;
     
-}
+} */
 
 
 .lastpage{
     text-align: center;
 }
 
-#end-page {
+/* #end-page {
     /* padding-top: 1000px; */
-}
+/* } */ 
 
 .done-btn {
     background-color: black;
@@ -491,5 +519,9 @@ body {
 .closed {
     background-color: red;
     color: white;
-
+    margin-left: 120px;
+    margin-right: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
 }
