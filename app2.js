@@ -47,7 +47,7 @@ var playersRef = database.ref("players");
 var cuisineButton;
 var finalButton;
 var currentPlayers = null;
-var playerTurns = 2; 
+var playerTurns = 2;
 var playerNum = false;
 var playerOneExists = false;
 var playerTwoExists = false;
@@ -126,12 +126,15 @@ function getInGame() {
             $("#topLogo").removeClass("topLogo-animate");
         }, 1000);
         setTimeout(function () {
-       
             $("#topLogo").addClass("topLogo-animateB");
         }, 1000);
+        setTimeout(function () {
+            $("#topLogo").removeClass("topLogo-animateB");
+        }, 2000);
 
-  
-        $(".playersContainer").addClass("div-animate");
+        $(".waiting").fadeOut();
+        $(".current-players-div").addClass("div-animate");
+        $(".playersRow").addClass("div-animate");
         $("#eliminate").show();
 
         setTimeout(function () {
@@ -144,16 +147,16 @@ function getInGame() {
 /////////////////////// RESET GAME FUNCTION /////////////////////// 
 
 function resetGameForAll() {
-    var cuisines = [{ food: "american",flag: "🇺🇸", eliminated: false },
-    { food: "chinese", flag: "🇨🇳",eliminated: false },
-    { food: "filipino",flag: "🇵🇭", eliminated: false },
-    { food: "indian",flag: "🇮🇳", eliminated: false },
-    { food: "italian",flag: "🇮🇹", eliminated: false },
-    { food: "japanese",flag: "🇯🇵", eliminated: false },
-    { food: "korean",flag: "🇰🇷", eliminated: false },
+    var cuisines = [{ food: "american", flag: "🇺🇸", eliminated: false },
+    { food: "chinese", flag: "🇨🇳", eliminated: false },
+    { food: "filipino", flag: "🇵🇭", eliminated: false },
+    { food: "indian", flag: "🇮🇳", eliminated: false },
+    { food: "italian", flag: "🇮🇹", eliminated: false },
+    { food: "japanese", flag: "🇯🇵", eliminated: false },
+    { food: "korean", flag: "🇰🇷", eliminated: false },
     { food: "thai", flag: "🇹🇭", eliminated: false },
-    { food: "mexican", flag: "🇲🇽",eliminated: false },
-    { food: "vietnamese",flag:"🇻🇳", eliminated: false }];
+    { food: "mexican", flag: "🇲🇽", eliminated: false },
+    { food: "vietnamese", flag: "🇻🇳", eliminated: false }];
     var players = [{ player: 'playerOne', playerOneExists: false, turns: 0 },
     { player: 'playerTwo', playerTwoExists: false, turns: 0 },
     { player: 'playerThree', playerThreeExists: false, turns: 0 },
@@ -192,10 +195,22 @@ database.ref("/cuisines").on("value", function (snapshot) {
         console.log(winner);
 
         /////////////////////// PART 2 SETUP /////////////////////// 
-$("#topLogo").addClass("topLogo-animate")
+        $("#topLogo").addClass("topLogo-animate");
+        setTimeout(function () {
+            $("#topLogo").removeClass("topLogo-animate");
+        }, 1000);
+        setTimeout(function () {
+
+            $("#topLogo").addClass("topLogo-animateB");
+        }, 1000);
+        setTimeout(function () {
+            $("#topLogo").removeClass("topLogo-animateB");
+        }, 2000);
+
+
         $('.cuisine-display').addClass("div-animate");
         $(".current-players-div").addClass("div-animate");
-        $("#eliminate").addClass("div-animate");
+        $("#eliminate").fadeOut();
 
         setTimeout(function () {
             $(".result-div").show();
@@ -203,13 +218,13 @@ $("#topLogo").addClass("topLogo-animate")
             $("#followB").hide();
         }, 500);
 
-     ///////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////
 
 
 
         $('#correct-answer-id').append(winner);
         if (winner === "korean") {
-            $('.foodImg').append( "<img src='assets/cuisines/korean-100.jpg' width='375px'>");
+            $('.foodImg').append("<img src='assets/cuisines/korean-100.jpg' width='375px'>");
         }
         else if (winner === "chinese") {
             $('.foodImg').append("<img src='assets/cuisines/chinese-100.jpg' width='375px'>");
@@ -290,10 +305,10 @@ $("#topLogo").addClass("topLogo-animate")
         $("#x").mouseleave(function () {
             $("#followB").hide();
         })
-        
+
     }
 
-       /////////////////////// xo animation end
+    /////////////////////// xo animation end
 
 
 
@@ -476,11 +491,11 @@ function initMap() {
                     console.log(currentPlaceID);
                     infowindow.setContent("<p class='mapTag'>" + place.name + "</p>");
 
-/////////////////////// RESULTS DIV /////////////////////// 
+                    /////////////////////// RESULTS DIV /////////////////////// 
 
                     $(".infoInfo").show();
                     $(".infoInfo").append("<p id='placeTitle'>" + place.name + "<p id='openClose'></p>" +
-                        "<p id='vicinity'>" + place.vicinity + "<p>" + place.rating + "<p id='priceLvl'></p>" + "<br>"
+                        "<p id='vicinity'>" + place.vicinity + "<p id='rating'></p>" + place.rating + "<p id='priceLvl'></p>" + "<br>"
                         + "<button id='goHere'>GO</button>" + "<br>" + "<a href ='index.html' class='xo' id='x2' role='button'>START OVER</a>");
 
                     if (place.opening_hours.open_now == true) {
@@ -508,6 +523,43 @@ function initMap() {
                     if (place.price_level === 4) {
                         $("#priceLvl").append("$$$$")
                     }
+
+                    if (0 <= place.rating && place.rating <= 1) {
+                        $("#rating").append("⭐️")
+                    } else if (1 < place.rating && place.rating <= 2) {
+                        $("#rating").append("⭐️⭐️")
+                    } else if (2 < place.rating && place.rating <= 3) {
+                        $("#rating").append("⭐️⭐️⭐️")
+                    } else if (3 < place.rating && place.rating <= 4) {
+                        $("#rating").append("⭐️⭐️⭐️⭐️")
+                    } else if (4 < place.rating && place.rating <= 5) {
+                        $("#rating").append("⭐️⭐️⭐️⭐️⭐️")
+                    }
+
+                    // $(".infoInfo").mouseenter(function () {
+                    //     $(".infoInfo").fadeIn();
+
+
+                    $(".infoInfo").mousemove(function (event) {
+                        $(".infoInfo").css({
+                            center: event.clientX,
+                            // top: event.clientY
+                        }
+
+                        )
+                        // $(".infoInfo").offset({
+                        //     left: event.clientX + 10,
+                        //     top: event.clientY+  10
+
+                        // })
+
+                    })
+                    // })
+
+
+
+
+
 
                     infowindow.open(map, this);
 

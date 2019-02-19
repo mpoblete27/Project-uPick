@@ -421,9 +421,11 @@ body {
 }
 
 .infoInfo {
+    position: absolute;
     width: 500px;
     margin-bottom: 50px;
-    height: 375px
+    height: 375px;
+    z-index: 5;
     
 }
 
