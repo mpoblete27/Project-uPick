@@ -1,5 +1,16 @@
 
+/* .bgkdout {
+    text-align: center;
+} */
+.background {
+        z-index:-20;
+    position: fixed;
+    width: 100%; 
+    /* height: 40%; */
+    /* margin-left: auto;
+    margin-right: auto; */
 
+}
 
 .start-page {
     width: 375px;
@@ -51,8 +62,11 @@
            width: 375px;
            margin: 0 auto;
     /* margin-top: -450px; */
-            height: 75%;
+            height: 500px;
+            border-radius: 25px;
+            box-shadow: 0px 0px 20px black;
       }
+      
 
 .mapTag {
     font-family: europa, sans-serif;
@@ -78,15 +92,7 @@
     text-transform: none;
 }
 
-      .infoInfo {
-        font-family: europa, sans-serif;
-          max-width: 375px;
-          text-align: center;
-          font-family: europa, sans-serif;
-          text-transform: uppercase;
-          color: white;
-          font-weight: bold;
-      }
+    
 
       #vicinity {
           text-transform: none;
@@ -94,7 +100,7 @@
 
      
 
-      #goHere {
+      /* #goHere {
 
         color: white;
         background-color: rgba(255, 255, 255, 0);
@@ -107,7 +113,7 @@
 
       #goHere:hover {
         background-color: rgba(255, 255, 255, 0.345);
-    }
+    } */
 
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -170,16 +176,19 @@ body {
 }
 
 .players {
+    border-radius: 5px;
     color: black;
     font-size: 16px;
     padding-right: 10px;
     padding-left: 10px;
     padding-top: 12.5px;
     padding-bottom: 12.5px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-top: 10px;
     margin-bottom: 10px;
     transition: all 0.5s ease;
+    margin: 5px;
+    box-shadow: 0px 0px 10px black;
 }
 .players:hover {
     color: white;
@@ -271,8 +280,9 @@ body {
 
 
 .cuisine-display {
-    margin-top: -50px;
+    margin-top: -120px;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 
@@ -281,25 +291,29 @@ body {
     background-color: white;
     border: none;
     margin: 10px;
-
+    padding-top: 15px;
+    padding-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding-left: 20px;
     padding-right: 20px;
-    box-shadow: 5px  5px black;
+    border-radius: 10px;
+    /* box-shadow: 5px  5px black; */
     font-size: 24px;
+    box-shadow:0px 0px 15px #ffe135;
 
 }
 
 .cuisine-btn-inactive {
     background-size: 200% 100%;
-    background-image: linear-gradient(to right, white 50%, orange 50%);
+    background-image: linear-gradient(to right, white 50%, #ffe135 50%);
     transition: background-position 0.7s;
+    /* transition: border-radius 0.5s ease; */
 }
 
 .cuisine-btn-inactive:hover {
     background-position: -100% 0;
-
+    /* border-radius: 50%; */
 }
 
 
@@ -308,18 +322,24 @@ body {
 
 
 .strike {
-    background-color: orange;
+    background-color: #ffe135;
     margin: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding-left: 20px;
     padding-right: 20px;
+    box-shadow: none;
+}
+
+.win-image {
+    border-radius: 25px;
+    box-shadow: 0px 0px 20px #EF3B24;
 }
 
 #upicked {
     width: 100px;
     justify-content: center;
-    margin-bottom: 25px
+    margin-bottom: 25px;
 
 }
 
@@ -329,12 +349,12 @@ body {
     letter-spacing: 4px;
     font-weight: 600;
     padding-top: 15px;
-    color: white;
+    /* color: white; */
     padding-bottom: 14px;
 }
 
 .winningCuisine {
-    background-color:#B88B37;
+    /* background-color:#B88B37; */
     width: 375px; 
     margin-left: auto;
     margin-right: auto;
@@ -348,14 +368,14 @@ body {
     text-align: center;
     font-family: europa, sans-serif;
     text-transform: uppercase;
-    margin-top: -450px;
+    margin-top: -550px;
     font-size: 24px;
     
 }
 
 .xo {
-    background-color: white;
-    color: black;
+    /* background-color: white;
+    color: black; */
     /* border: 1px solid black; */
     margin-left: 25px;
     margin-right: 25px;
@@ -383,31 +403,31 @@ body {
 }
 
 
-#rotate-replay{
+.rotate-replay{
     transform: rotate(0);
     transition: transform 2s ease;  
   }
   
-  #rotate-replay:hover {
-      transform: rotate(infinite); /* Standard syntax */
+  .rotate-replay:hover {
+      transform: rotate(-1000deg); /* Standard syntax */
   }
 
-  #rotate-go{
+  .rotate-go{
     transform: rotate(0);
     transition: transform 2s ease;  
   }
   
-  #rotate-go:hover {
+  .rotate-go:hover {
       transform: rotate(-1000deg); /* Standard syntax */
   }
 
 
-#followB {
+.followB {
     position: absolute;
     z-index: 5;
 }
 
-#followA {
+.followA {
     position: absolute;
     z-index: 5;
 }
@@ -421,12 +441,19 @@ body {
 }
 
 .infoInfo {
-    position: absolute;
-    width: 500px;
-    margin-bottom: 50px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    /* position: absolute; */
+    width: 375px;
     height: 375px;
     z-index: 5;
-    
+    border-radius: 25px;
+    /* border: 2px solid yellow; */
+    font-family: europa, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+      background-color: white;
 }
 
 .yes-btn {
@@ -441,6 +468,10 @@ body {
     text-align: center;
 }
 
+#end-page {
+    /* padding-top: 1000px; */
+}
+
 .done-btn {
     background-color: black;
     border: 1px solid white;
@@ -448,10 +479,17 @@ body {
     color: white;
 }
 
-#x2 {
+/* #x2 {
     color: white;
     background-color: rgba(255, 255, 255, 0);
     border: 2px white solid;
     font-weight: bold;
     font-family: europa, sans-serif;
+} */
+
+
+.closed {
+    background-color: red;
+    color: white;
+
 }

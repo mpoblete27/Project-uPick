@@ -72,9 +72,10 @@ $(document).ready(function () {
 $(document).on("click", "#playerOne", function () {
 
 
-    $("#playerOne").css("background-color", "red");
+    $("#playerOne").css("background-color", "#FF00FF");
     $("#playerOne").css("color", "white");
     $("#playerOne").css("border-radius", "50%");
+    $("#playerOne").css("box-shadow", "none");
 
 
 
@@ -84,7 +85,8 @@ $(document).on("click", "#playerOne", function () {
 });
 
 $(document).on("click", "#playerTwo", function () {
-    $("#playerTwo").css("background-color", "yellow");
+    $("#playerTwo").css("background-color", "#4f86f7");
+    $("#playerTwo").css("box-shadow", "none");
     $("#playerTwo").css("color", "white");
     $("#playerTwo").css("border-radius", "50%");
 
@@ -94,17 +96,18 @@ $(document).on("click", "#playerTwo", function () {
     getInGame();
 });
 $(document).on("click", "#playerThree", function () {
-    $("#playerThree").css("background-color", "green");
+    $("#playerThree").css("background-color", "#ffe135");
     $("#playerThree").css("color", "white");
     $("#playerThree").css("border-radius", "50%");
-    // $(".player-three-modal").modal("show");
+    $("#playerThree").css("box-shadow", "none");
     playerThreeExists = true;
     getInGame();
 });
 $(document).on("click", "#playerFour", function () {
-    $("#playerFour").css("background-color", "blue");
+    $("#playerFour").css("background-color", "#ffbcd9");
     $("#playerFour").css("color", "white");
     $("#playerFour").css("border-radius", "50%");
+    $("#playerFoud").css("box-shadow", "none");
 
     playerFourExists = true;
     getInGame();
@@ -214,8 +217,8 @@ database.ref("/cuisines").on("value", function (snapshot) {
 
         setTimeout(function () {
             $(".result-div").show();
-            $("#followA").hide();
-            $("#followB").hide();
+            $(".followA").hide();
+            $(".followB").hide();
         }, 500);
 
         ///////////////////////////////////////////////////////////////
@@ -224,36 +227,36 @@ database.ref("/cuisines").on("value", function (snapshot) {
 
         $('#correct-answer-id').append(winner);
         if (winner === "korean") {
-            $('.foodImg').append("<img src='assets/cuisines/korean-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/korean-100.jpg' width='280px'>");
         }
         else if (winner === "chinese") {
-            $('.foodImg').append("<img src='assets/cuisines/chinese-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/chinese-100.jpg' width='280px'>");
         }
         else if (winner === "american") {
-            $('.foodImg').append("<img src='assets/cuisines/american-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/american-100.jpg' width='280px'>");
         }
         else if (winner === "filipino") {
-            $('.foodImg').append("<img src='assets/cuisines/fil-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/fil-100.jpg' width='280px'>");
         }
         else if (winner === "indian") {
-            $('.foodImg').append("<img src='assets/cuisines/indian-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/indian-100.jpg' width='280px'>");
         }
         else if (winner === "italian") {
-            $('.foodImg').append("<img src='assets/cuisines/italian_1-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/italian_1-100.jpg' width='280px'>");
         }
 
         else if (winner === "japanese") {
-            $('.foodImg').append("<img src='assets/cuisines/japanese-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/japanese-100.jpg' width='280px'>");
         }
 
         else if (winner === "thai") {
-            $('.foodImg').append("<img src='assets/cuisines/thai_1-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/thai_1-100.jpg' width='280px'>");
         }
         else if (winner === "mexican") {
-            $('.foodImg').append("<img src='assets/cuisines/mexican-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/mexican-100.jpg' width='280px'>");
         }
         else if (winner === "vietnamese") {
-            $('.foodImg').append("<img src='assets/cuisines/viet_1-100.jpg' width='375px'>");
+            $('.foodImg').append("<img class='win-image' src='assets/cuisines/viet_1-100.jpg' width='280px'>");
         }
 
 
@@ -267,12 +270,12 @@ database.ref("/cuisines").on("value", function (snapshot) {
 
 
         $("#o").mouseenter(function () {
-            $("#followA").fadeIn();
+            $(".followA").fadeIn();
 
 
             $("#o").mousemove(function (event) {
 
-                $("#followA").offset({
+                $(".followA").offset({
                     left: event.pageX + 15,
                     top: event.pageY - 15
 
@@ -283,17 +286,17 @@ database.ref("/cuisines").on("value", function (snapshot) {
 
 
         $("#o").mouseleave(function () {
-            $("#followA").hide();
+            $(".followA").hide();
         })
 
 
         $("#x").mouseenter(function () {
-            $("#followB").fadeIn();
+            $(".followB").fadeIn();
 
 
             $("#x").mousemove(function (event) {
 
-                $("#followB").offset({
+                $(".followB").offset({
                     left: event.pageX - 60,
                     top: event.pageY - 15
 
@@ -303,7 +306,7 @@ database.ref("/cuisines").on("value", function (snapshot) {
         })
 
         $("#x").mouseleave(function () {
-            $("#followB").hide();
+            $(".followB").hide();
         })
 
     }
@@ -481,10 +484,12 @@ function initMap() {
 
 
                 google.maps.event.addListener(marker, 'click', function () {
+                  
                     $(".infoInfo").empty();
-                    // var selectBtn = $('<button>');
-                    //     selectBtn.addClass("selectButton");
-                    //     selectBtn.text("Select This Restaurant");
+                 
+  var photoUrl = place.photos[0].getUrl({maxWidth:200, maxHeight: 200});
+                    var img = document.createElement("img");
+                    img.setAttribute('src', photoUrl + "photo.jpg");
 
                     currentPlaceID = place.place_id;
                     currentPlaceName = place.name;
@@ -492,23 +497,34 @@ function initMap() {
                     infowindow.setContent("<p class='mapTag'>" + place.name + "</p>");
 
                     /////////////////////// RESULTS DIV /////////////////////// 
-
+                    $(".followB").hide();
+                    $(".followA").hide();
                     $(".infoInfo").show();
-                    $(".infoInfo").append("<p id='placeTitle'>" + place.name + "<p id='openClose'></p>" +
+
+                  
+
+
+                    $(".infoInfo").append( "<br>"+ "<br>"+ "<p id='placeTitle'>" + place.name + "<p id='openClose'></p>" +
                         "<p id='vicinity'>" + place.vicinity + "<p id='rating'></p>" + place.rating + "<p id='priceLvl'></p>" + "<br>"
-                        + "<button id='goHere'>GO</button>" + "<br>" + "<a href ='index.html' class='xo' id='x2' role='button'>START OVER</a>");
+                       + "<a href ='index.html'   id='replay-again' class='xo'  role='button'> <img class='followB' src='assets/replay-bubble.png' height='20px'><img class='rotate-replay' src='assets/replay2.png' width='40px'></a>" + " <img class='followA' src='assets/go_2.png' height='20px'><img src='assets/go2.png'  class = 'rotate-go' id='goHere' width='40px'>" );
+                       console.log(place.photos)
+
+                    
 
                     if (place.opening_hours.open_now == true) {
                         $("#openClose").append("OPEN");
-
-                        $(".infoInfo").css('background-color', '#B88B37');
+                        $(".infoInfo").css('border', 'none ')
+                        $(".infoInfo").css('background-color', '#ddf78b');
                     }
 
                     if (place.opening_hours.open_now == false) {
                         $("#openClose").append("CLOSED")
+                        $("#openClose").addClass("closed")
                         $("#goHere").hide();
+                        $(".followA").hide();
                         $("#x2").show();
-                        $(".infoInfo").css('background-color', '#CD3C1D')
+                        $(".infoInfo").css('background-color', 'white')
+                        $(".infoInfo").css('border', '2px solid black ')
                     }
 
                     if (place.price_level === 1) {
@@ -565,6 +581,49 @@ function initMap() {
 
                     /////////////////////// FINAL PAGE /////////////////////// 
 
+                    $("#replay-again").mouseenter(function () {
+                        $(".followB").fadeIn();
+            
+            
+                        $("#replay-again").mousemove(function (event) {
+            
+                            $(".followB").offset({
+                                left: event.pageX - 60,
+                                top: event.pageY - 15
+            
+                            })
+            
+                        })
+                    })
+            
+                    $("#replay-again").mouseleave(function () {
+                        $(".followB").hide();
+                    })
+
+
+
+                    $("#goHere").mouseenter(function () {
+                        $(".followA").fadeIn();
+            
+            
+                        $("#goHere").mousemove(function (event) {
+            
+                            $(".followA").offset({
+                                left: event.pageX + 15,
+                                top: event.pageY - 15
+            
+                            })
+            
+                        })
+                    })
+            
+            
+                    $("#goHere").mouseleave(function () {
+                        $(".followA").hide();
+                    })
+
+
+
                     $("#goHere").on('click', function () {
 
                         // $('#confirm-modal').modal('show');
@@ -576,8 +635,8 @@ function initMap() {
                             $("#goHere").hide();
                             console.log("egg")
                             $("#map").hide();
-                            $(".infoInfo").css('transform', 'translateY(-375px)');
-                            $(".infoInfo").css('background-color', 'rgba(184, 139, 55, 0.75)');
+                            // $(".infoInfo").css('transform', 'translateY(-375px)');
+                            // $(".infoInfo").css('background-color', '');
 
                             $(document).on("click", ".done-btn", function () {
                                 resetGameForAll();
