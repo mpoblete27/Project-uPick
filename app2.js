@@ -216,6 +216,7 @@ database.ref("/cuisines").on("value", function (snapshot) {
         $("#eliminate").fadeOut();
 
         setTimeout(function () {
+            
             $(".result-div").show();
             $(".followA").hide();
             $(".followB").hide();
@@ -262,10 +263,15 @@ database.ref("/cuisines").on("value", function (snapshot) {
 
         /////////////////////// xo animation 
         $(document).on("click", "#o", function () {
-            $("#map").show();
+            setTimeout(function () {
+                $("#map").fadeIn();
+            }, 500);
+
             initMap();
-            $(".xo-display").hide();
-            $(".foodImg").hide();
+         
+            $(".xo-display").fadeOut();
+            $(".foodImg").addClass("div-animate");
+
         })
 
 
