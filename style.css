@@ -240,6 +240,8 @@ body {
 .current-players-div {
     text-align: center;
     font-family: europa, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
     margin-top: 50px;
 }
 

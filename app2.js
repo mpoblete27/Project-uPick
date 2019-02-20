@@ -107,7 +107,7 @@ $(document).on("click", "#playerFour", function () {
     $("#playerFour").css("background-color", "#ffbcd9");
     $("#playerFour").css("color", "white");
     $("#playerFour").css("border-radius", "50%");
-    $("#playerFoud").css("box-shadow", "none");
+    $("#playerFour").css("box-shadow", "none");
 
     playerFourExists = true;
     getInGame();
