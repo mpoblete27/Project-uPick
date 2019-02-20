@@ -1,5 +1,16 @@
 
+/* .bgkdout {
+    text-align: center;
+} */
+.background {
+        z-index:-20;
+    position: fixed;
+    width: 100%; 
+    /* height: 40%; */
+    /* margin-left: auto;
+    margin-right: auto; */
 
+}
 
 .start-page {
     width: 375px;
@@ -12,6 +23,10 @@
 }
 
 #start {
+    width: 275px;
+}
+
+#pressing {
     width: 275px;
 }
 
@@ -46,9 +61,13 @@
        #map {
            width: 375px;
            margin: 0 auto;
-    
-            height: 75%;
+    margin-top: -250px;
+            height: 500px;
+            margin-bottom: 100px;
+            border-radius: 25px;
+            /* box-shadow: 0px 0px 20px black; */
       }
+      
 
 .mapTag {
     font-family: europa, sans-serif;
@@ -65,32 +84,10 @@
       color: red;
 }
 
-#placeTitle {
-    font-family: europa, sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 25px;
-    text-transform: none;
-}
-
-      .infoInfo {
-        font-family: europa, sans-serif;
-          max-width: 375px;
-          text-align: center;
-          font-family: europa, sans-serif;
-          text-transform: uppercase;
-          color: white;
-          font-weight: bold;
-      }
-
-      #vicinity {
-          text-transform: none;
-      }
 
      
 
-      #goHere {
+      /* #goHere {
 
         color: white;
         background-color: rgba(255, 255, 255, 0);
@@ -103,7 +100,7 @@
 
       #goHere:hover {
         background-color: rgba(255, 255, 255, 0.345);
-    }
+    } */
 
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -166,21 +163,45 @@ body {
 }
 
 .players {
+    border-radius: 5px;
     color: black;
     font-size: 16px;
-    padding: 10px;
-    border: 1px solid black;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
+    /* border: 1px solid black; */
     margin-top: 10px;
     margin-bottom: 10px;
+    transition: all 0.5s ease;
+    margin: 5px;
+    box-shadow: 0px 0px 10px black;
 }
 .players:hover {
     color: white;
     font-size: 16px;
-    padding: 10px;
     background-color: black;
     margin-top: 10px;
     margin-bottom: 10px;
     text-decoration: none;
+    border-radius: 50%;
+}
+
+
+.div-animate {
+    transform: translateY(-1000px);
+    transition: 2s;
+}
+
+/* .div-animate-in {
+    transform: translateY(-1000px);
+    transition: 2s;
+} */
+
+
+
+#playerOne:focus {
+    transform: translateY(25px);
 }
 
 /* .lolmodal{
@@ -219,6 +240,8 @@ body {
 .current-players-div {
     text-align: center;
     font-family: europa, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
     margin-top: 50px;
 }
 
@@ -232,47 +255,80 @@ body {
     text-align: center;
 }
 
+.topLogo-animate {
+    transform: translateX(-300px) rotate(-180deg);
+    transition:  0.8s ;
+}
+
+.topLogo-animateB {
+    transform: translateX(0) rotate(0deg);
+    transition:  0.8s ;
+
+}
+
+
+
 .cuisine-display {
+    margin-top: -120px;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 
 
 .cuisine-button {
     background-color: white;
-    border: 1px solid black;
+    border: none;
     margin: 10px;
-
+    padding-top: 15px;
+    padding-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding-left: 20px;
     padding-right: 20px;
-}
-
-.cuisine-button:hover {
-
-
-}
-
-.cuisine-button:active {
-    transform: scale(0.95);
+    border-radius: 10px;
+    /* box-shadow: 5px  5px black; */
+    font-size: 24px;
+    box-shadow:0px 0px 15px #ffe135;
 
 }
+
+.cuisine-btn-inactive {
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, white 50%, #ffe135 50%);
+    transition: background-position 0.7s;
+    /* transition: border-radius 0.5s ease; */
+}
+
+.cuisine-btn-inactive:hover {
+    background-position: -100% 0;
+    /* border-radius: 50%; */
+}
+
+
+
+
+
 
 .strike {
-    background-color: rgba(205, 61, 29, 0.75);
-    border: 1px solid black;
+    background-color: #ffe135;
     margin: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding-left: 20px;
     padding-right: 20px;
+    box-shadow: none;
+}
+
+.win-image {
+    border-radius: 25px;
+    /* box-shadow: 0px 0px 20px #EF3B24; */
 }
 
 #upicked {
     width: 100px;
     justify-content: center;
-    margin-bottom: 25px
+    margin-bottom: 25px;
 
 }
 
@@ -282,12 +338,12 @@ body {
     letter-spacing: 4px;
     font-weight: 600;
     padding-top: 15px;
-    color: white;
+    /* color: white; */
     padding-bottom: 14px;
 }
 
 .winningCuisine {
-    background-color:#B88B37;
+    /* background-color:#B88B37; */
     width: 375px; 
     margin-left: auto;
     margin-right: auto;
@@ -301,14 +357,15 @@ body {
     text-align: center;
     font-family: europa, sans-serif;
     text-transform: uppercase;
-    margin-top: 50px;
+    margin-top: -500px;
     font-size: 24px;
+    
 }
 
 .xo {
-    background-color: white;
-    color: black;
-    border: 1px solid black;
+    /* background-color: white;
+    color: black; */
+    /* border: 1px solid black; */
     margin-left: 25px;
     margin-right: 25px;
     padding-left: 20px;
@@ -323,43 +380,124 @@ body {
 
 
 #o:hover {
-    background-color: #B88B37;
-    color: white;
-    border: 1px solid black;
+
     text-decoration: none;
+
 
 }
 
 #x:hover {
-    background-color: #CD3C1D;
-    color: white;
-    border: 1px solid black;
+
+    text-decoration: none;
 }
 
-.gobackbtn {
+
+#goHere {
+    margin-left: 43px;
+}
+
+#replay-again {
+    margin-right: 43px;
+}
+
+.rotate-replay{
+    transform: rotate(0);
+    transition: transform 2s ease;  
+  }
+  
+  .rotate-replay:hover {
+      transform: rotate(-1000deg); /* Standard syntax */
+  }
+
+
+  .rotate-go{
+    transform: rotate(0);
+    transition: transform 2s ease;  
+  }
+  
+  .rotate-go:hover {
+      transform: rotate(-1000deg); /* Standard syntax */
+  }
+
+
+.followB {
+    position: absolute;
+    z-index: 5;
+}
+
+.followA {
+    position: absolute;
+    z-index: 5;
+}
+
+
+/* .gobackbtn {
     background-color: black;
     border: 1px solid white;
     padding: 5px;
     color: white;
-}
+} */
 
 .infoInfo {
-    width: 500px;
-    margin-bottom: 50px;
-    height: 375px
+    margin-top: -225px;
+    margin-bottom: 275px;
+    /* position: absolute; */
+    width: 375px;
+    height: 375px;
+    border-radius: 25px;
+    /* border: 2px solid yellow; */
+    font-family: europa, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+      background-color: white;
 }
 
-.yes-btn {
+#placeTitle {
+    font-family: europa, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 25px;
+    text-transform: none;
+}
+
+    
+
+      #vicinity {
+        font-weight: inherit;
+        font-size: 14px;
+        text-transform: none;
+      }
+
+      #priceLvl {
+        font-weight: inherit;
+          font-size: 14px;
+          text-transform: none;
+      }
+
+      #rating {
+        font-weight: inherit;
+          font-size: 14px;
+          text-transform: none;
+      }
+
+
+
+
+
+/* .yes-btn {
     background-color: black;
     border: 1px solid white;
     padding: 5px;
     
-}
+} */
 
 
 .lastpage{
     text-align: center;
 }
+
 
 .done-btn {
     background-color: black;
@@ -368,10 +506,21 @@ body {
     color: white;
 }
 
-#x2 {
+/* #x2 {
     color: white;
     background-color: rgba(255, 255, 255, 0);
     border: 2px white solid;
     font-weight: bold;
     font-family: europa, sans-serif;
+} */
+
+
+.closed {
+    background-color: red;
+    color: white;
+    margin-left: 120px;
+    margin-right: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
 }

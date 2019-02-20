@@ -1,80 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>uPick</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    
-        <link rel="stylesheet" href="style.css">
+
+    <link rel="shortcut icon" type="image/png" href="assets/upick-fav.png"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-   
-   
 
-<div class="container start-page">   
-    <a href="upick.html" id="start-game">
-        <img id="start"  src="assets/upicklogo3d.png">
-    </a>
-  
-</div>
 
- <div class="container start-page2">
-  <img id="presstoenter" src="assets/presstoenter.gif" width="100">
-</div> 
+
+
+    <div class="container start-page">
+        <a href="upick.html" id="start-game">
+            <img id="start" src="assets/upicklogo3d.png">
+            <img id="pressing" src="assets/outlinelogo.png">
+        </a>
+
+    </div>
+
+
 
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <script>
-
-      var config = {
-        apiKey: "AIzaSyBMHL9um8Nsoy3vj8CPWIZuaG3QvKDgYys",
-        authDomain: "upick-d5758.firebaseapp.com",
-        databaseURL: "https://upick-d5758.firebaseio.com",
-        projectId: "upick-d5758",
-        storageBucket: "upick-d5758.appspot.com",
-        messagingSenderId: "989534447107"
-      };
-  firebase.initializeApp(config);
-
-      // Create a variable to reference the database
-
-       var database = firebase.database();    
-
-
-// $("#on").hide();
-
-//         $('#start-game').mousedown(function () {  
-//             $("#off").hide();
-//             $("#on").show();
-       
-        $('#start-game').on('click', function () {
-            resetGameForAll();
-        });
-
-        function resetGameForAll(){
-            var cuisines = [{food: 'American', eliminated: false },
-                    {food: 'Chinese', eliminated: false },
-                    {food: 'Filipino', eliminated: false },
-                    {food: 'Indian', eliminated: false },
-                    {food: 'Italian', eliminated: false },
-                    {food: 'Japanese', eliminated: false },
-                    {food: 'Korean', eliminated: false },
-                    {food: 'Thai', eliminated: false },
-                    {food: 'Mexican', eliminated: false },
-                    {food: 'Vietnamese', eliminated: false }];
-
-            database.ref('/cuisines').set({
-                cuisines: cuisines
-            });
-            createButtons(cuisines)
-        }
-
-    </script>
+    <script src="app.js"></script>
 </body>
+
 </html>
